@@ -425,7 +425,7 @@
   date: 2026-03-10
   abstract: https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6823
   slides: https://slides.marcphilipp.de/2026-javaland-the-road-to-junit-6/
-  code: https://codeberg.org/marcphilipp/junit6-demo
+  code: https://codeberg.org/marcphilipp/junit6-demo/src/tag/javaland-2026
 
 - title: The Road to JUnit 6
   event: JCON Europe
@@ -433,3 +433,5 @@
   country: de
   date: 2026-04-21
   abstract: https://schedule.jcon.one/2026/session/1037213
+  slides: https://slides.marcphilipp.de/2026-jcon-the-road-to-junit-6/
+  code: https://codeberg.org/marcphilipp/junit6-demo/src/tag/jcon-2026
