@@ -1,0 +1,94 @@
+---
+import Icon from './Icon.astro';
+import { translations, formatDate, type Lang } from '../data/translations';
+import talks from '../data/talks.json';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+
+interface Talk {
+  title: string;
+  event: string;
+  city?: string;
+  country?: string;
+  date: string;
+  date_max?: string;
+  'co-speakers'?: string;
+  abstract?: string;
+  slides?: string;
+  slideImage?: string;
+  code?: string;
+  youtube?: string;
+  recording?: string;
+}
+
+const byYear = new Map<string, Talk[]>();
+for (const talk of [...(talks as Talk[])].reverse()) {
+  const year = talk.date.slice(0, 4);
+  byYear.set(year, [...(byYear.get(year) ?? []), talk]);
+}
+
+function location(talk: Talk): string | undefined {
+  if (!talk.city) return undefined;
+  const city = t.cities[talk.city] ?? talk.city;
+  if (talk.country && talk.country !== lang) {
+    return `${city}, ${t.countries[talk.country] ?? talk.country}`;
+  }
+  return city;
+}
+---
+
+{[...byYear.entries()].map(([year, yearTalks]) => (
+  <>
+    <h2>{year}</h2>
+    <div class="talks-grid">
+      {yearTalks.map((talk) => {
+        const image = talk.slideImage ? `/${talk.slideImage}` : '/img/slide_placeholder.png';
+        const links = [
+          talk.abstract && { href: talk.abstract, icon: 'align-left', label: t.talks.abstract },
+          talk.slides && { href: talk.slides, icon: 'slideshare', label: t.talks.slides },
+          talk.code && { href: talk.code, icon: 'file-code', label: t.talks.code },
+          talk.youtube && {
+            href: `https://www.youtube.com/watch?v=${talk.youtube}`,
+            icon: 'circle-play',
+            label: t.talks.recording,
+          },
+          talk.recording && { href: talk.recording, icon: 'circle-play', label: t.talks.recording },
+        ].filter((link) => !!link);
+        return (
+          <div class="talk">
+            {talk.slides ? (
+              <a href={talk.slides}><img src={image} alt="" /></a>
+            ) : (
+              <img src={image} alt="" />
+            )}
+            <div class="caption">
+              <p>
+                <strong>
+                  {talk.title}
+                  {talk['co-speakers'] && ` (${t.talks.with} ${talk['co-speakers']})`}
+                </strong>
+              </p>
+              <p>
+                <em>{talk.event}</em><br />
+                {location(talk) && <>{location(talk)}<br /></>}
+                {formatDate(new Date(talk.date), lang)}
+                {talk.date_max && ` - ${formatDate(new Date(talk.date_max), lang)}`}
+              </p>
+              <ul class="list-inline talk-links">
+                {links.map((link) => (
+                  <li>
+                    <a href={link.href}><Icon name={link.icon} /> {link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </>
+))}

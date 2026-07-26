@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Lang } from '../data/translations';
+
+interface Props {
+  lang: Lang;
+  alternates: Partial<Record<Lang, string>>;
+  roles: string[];
+  labels: { contact: string; talks: string; projects: string; cv: string };
+  links: { contact: string; talks: string };
+}
+const { lang, alternates, roles, labels, links } = Astro.props;
+---
+
+<Layout lang={lang} alternates={alternates} bodyClass="landing-page" showJumbotron={false}>
+  <img src="/img/avatar.jpg" alt="Marc Philipp" class="img-circle" style="width:215px; height:215px;" />
+
+  <h1>Marc Philipp</h1>
+
+  <ul class="lead list-unstyled">
+    {roles.map((role) => <li>{role}</li>)}
+  </ul>
+
+  <div class="btn-group" role="group" style="min-width: 200px">
+    <a class="btn btn-success" href={links.contact} role="button"><Icon name="envelope" /> {labels.contact}</a>
+    <a class="btn btn-default" href={links.talks} role="button"><Icon name="microphone" /> <span class="hidden-xs">{labels.talks}</span></a>
+    <a class="btn btn-default" href="https://github.com/marcphilipp" role="button"><Icon name="github" /> <span class="hidden-xs">{labels.projects}</span></a>
+    <a class="btn btn-default" href="https://www.linkedin.com/in/marcphilipp" role="button"><Icon name="linkedin" /> <span class="hidden-xs">{labels.cv}</span></a>
+  </div>
+</Layout>

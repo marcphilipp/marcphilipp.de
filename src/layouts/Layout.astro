@@ -1,0 +1,165 @@
+---
+import Icon from '../components/Icon.astro';
+import { translations, type Lang } from '../data/translations';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  lang: Lang;
+  /** URL of this page in each language it exists in (including the current one). */
+  alternates?: Partial<Record<Lang, string>>;
+  /** Which nav item to highlight. */
+  activeNav?: 'blog' | 'talks' | 'contact';
+  bodyClass?: string;
+  showJumbotron?: boolean;
+}
+const {
+  title,
+  lang,
+  alternates = {},
+  activeNav,
+  bodyClass,
+  showJumbotron = true,
+} = Astro.props;
+
+const siteTitle = 'Marc Philipp';
+const fullTitle = title ? `${title} • ${siteTitle}` : siteTitle;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const nav = {
+  en: [
+    { title: 'Blog', href: '/en/blog/', key: 'blog' },
+    { title: 'Talks', href: '/en/talks/', key: 'talks' },
+    { title: 'Contact', href: '/en/contact/', key: 'contact' },
+  ],
+  de: [
+    { title: 'Blog', href: '/de/blog/', key: 'blog' },
+    { title: 'Vorträge', href: '/de/vortraege/', key: 'talks' },
+    { title: 'Kontakt', href: '/de/kontakt/', key: 'contact' },
+  ],
+}[lang];
+
+const socialLinks = [
+  { key: 'github', href: 'https://github.com/marcphilipp', title: 'marcphilipp on GitHub' },
+  { key: 'linkedin', href: 'https://www.linkedin.com/in/marcphilipp', title: 'Marc Philipp on LinkedIn' },
+  { key: 'xing', href: 'https://www.xing.com/profile/Marc_Philipp9', title: 'Marc Philipp on Xing' },
+  { key: 'mastodon', href: 'https://chaos.social/@marcphilipp', title: '@marcphilipp@chaos.social on Mastodon', me: true },
+  { key: 'bluesky', href: 'https://bsky.app/profile/marcphilipp.de', title: '@marcphilipp.de on Bluesky', me: true },
+];
+
+const langs: Lang[] = ['en', 'de'];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content="" />
+
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:image" content={new URL('/img/social-preview-image.png', Astro.site)} />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/favicon-144x144.png" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+
+    {langs
+      .filter((l) => l !== lang && alternates[l])
+      .map((l) => <link rel="alternate" hreflang={l} href={alternates[l]} />)}
+  </head>
+
+  <body class={bodyClass}>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand" href={translations[lang].index}>{siteTitle}</a>
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input" />
+          <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+          <div class="navbar-links">
+          <ul class="navbar-main">
+            {nav.map((item) => (
+              <li class:list={{ active: item.key === activeNav }}>
+                <a href={item.href}>{item.title}</a>
+              </li>
+            ))}
+          </ul>
+          <ul class="navbar-right">
+            <li class="language-menu">
+              <details>
+                <summary><Icon name="language" /> {translations[lang].name}</summary>
+                <ul class="dropdown-menu">
+                  {langs.map((l) =>
+                    l === lang ? (
+                      <li class="active"><a href={Astro.url.pathname}>{translations[l].name}</a></li>
+                    ) : alternates[l] ? (
+                      <li><a href={alternates[l]}>{translations[l].name}</a></li>
+                    ) : (
+                      <li class="disabled"><a>{translations[l].name}</a></li>
+                    )
+                  )}
+                </ul>
+              </details>
+            </li>
+            {socialLinks.map((link) => (
+              <li class:list={['social', link.key]}>
+                <a rel={link.me ? 'me' : undefined} href={link.href} title={link.title}>
+                  <Icon name={link.key} />
+                </a>
+              </li>
+            ))}
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {showJumbotron && (
+      <div class="jumbotron">
+        <div class="container">
+          <h1>{title} <slot name="subtitle" /></h1>
+        </div>
+      </div>
+    )}
+
+    <div id="content" class="container">
+      <slot />
+    </div>
+
+    <footer>
+      <div class="container">
+        <ul class="footer-nav">
+          <li class:list={{ active: Astro.url.pathname === '/de/datenschutz/' }}>
+            <a href="/de/datenschutz/">Datenschutzerklärung</a>
+          </li>
+        </ul>
+        <p class="text-muted"><Icon name="copyright" /> {new Date().getFullYear()} {siteTitle}</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+---
+import BlogIndex from '../../components/BlogIndex.astro';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Blog" lang="en" activeNav="blog" alternates={{ en: '/en/blog/', de: '/de/blog/' }}>
+  <BlogIndex lang="en">
+    <div class="well blog-hint">
+      <Icon name="language" />
+      <div>
+        These are my blog posts in English. If you speak German, be sure to check out my
+        <a href="/de/blog/">German posts</a>, too.
+      </div>
+    </div>
+  </BlogIndex>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
+import { translations, formatDate, type Lang } from '../data/translations';
+import { postPath } from '../data/posts';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang];
+
+const posts = (await getCollection('posts', (post) => post.data.lang === lang)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<slot />
+
+<hr />
+
+{posts.map((post, index) => {
+  const html = post.rendered?.html ?? '';
+  // Jekyll never applied the lead styling to excerpts, so drop the wrapper
+  // (the <!--more--> split may leave it unclosed anyway).
+  const excerpt = html
+    .split('<!--more-->')[0]
+    .replaceAll('<div class="lead">', '')
+    .replaceAll('</div>', '');
+  return (
+    <>
+      <h2 class="post-title">
+        <a href={postPath(post)}>{post.data.title}</a>{' '}
+        <small class="post-date">{formatDate(post.data.date, lang)}</small>
+      </h2>
+      <Fragment set:html={excerpt} />
+      <p>
+        <a href={postPath(post)} class="btn btn-default">
+          {t.blog.read_on} <Icon name="chevron-right" />
+        </a>
+      </p>
+      {index < posts.length - 1 && <hr />}
+    </>
+  );
+})}
+
+<hr />
+
+<p>{t.blog.subscribe} <a href="/feed.xml">{t.blog.via_rss}</a></p>

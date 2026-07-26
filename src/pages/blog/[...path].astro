@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import Icon from '../../components/Icon.astro';
+import Layout from '../../layouts/Layout.astro';
+import { formatDate, type Lang } from '../../data/translations';
+import { postPath } from '../../data/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { path: postPath(post).replace(/^\/blog\/|\/$/g, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const lang = post.data.lang as Lang;
+
+const allPosts = await getCollection('posts');
+const alternates = Object.fromEntries(
+  allPosts
+    .filter((other) => other.data.ref === post.data.ref)
+    .map((other) => [other.data.lang, postPath(other)])
+);
+
+// Prev/next within same-language posts, excluding translations of this post.
+const relevant = allPosts
+  .filter((other) => other.data.lang === lang && other.data.ref !== post.data.ref)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const previous = relevant.filter((other) => other.data.date < post.data.date).at(-1);
+const next = relevant.find((other) => other.data.date > post.data.date);
+---
+
+<Layout title={post.data.title} lang={lang} activeNav="blog" alternates={alternates}>
+  <small slot="subtitle" class="post-date">{formatDate(post.data.date, lang)}</small>
+
+  <article role="article">
+    {post.data.note && <div class="well" set:html={post.data.note} />}
+    <Content />
+  </article>
+
+  {(previous || next) && (
+    <nav class="pagination-nav">
+      <ul class="pagination">
+        {previous && (
+          <li>
+            <a href={postPath(previous)}><Icon name="chevron-left" /> {previous.data.title}</a>
+          </li>
+        )}
+        {next && (
+          <li>
+            <a href={postPath(next)}>{next.data.title} <Icon name="chevron-right" /></a>
+          </li>
+        )}
+      </ul>
+    </nav>
+  )}
+</Layout>

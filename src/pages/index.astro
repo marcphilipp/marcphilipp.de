@@ -1,0 +1,18 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  lang="en"
+  alternates={{ en: '/', de: '/de/startseite/' }}
+  roles={[
+    'Software Engineer',
+    'Open Source Enthusiast',
+    'JUnit Team Lead',
+    'Conference Speaker',
+    'Gradle Expert',
+    'Java Champion',
+  ]}
+  labels={{ contact: 'Contact', talks: 'Talks', projects: 'Projects', cv: 'CV' }}
+  links={{ contact: '/en/contact/', talks: '/en/talks/' }}
+/>
