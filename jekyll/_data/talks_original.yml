@@ -435,3 +435,7 @@
   abstract: https://schedule.jcon.one/2026/session/1037213
   slides: https://slides.marcphilipp.de/2026-jcon-the-road-to-junit-6/
   code: https://codeberg.org/marcphilipp/junit6-demo/src/tag/jcon-2026
+
+- title: The Road to JUnit 6
+  event: DATEV Coding Festival
+  date: 2026-10-06
