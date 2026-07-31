@@ -66,6 +66,15 @@ const socialLinks = [
 
 const langs: Lang[] = ['en', 'de'];
 
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Marc Philipp',
+  url: Astro.site?.href,
+  jobTitle: 'JUnit Team Lead and Independent Engineering Consultant',
+  sameAs: socialLinks.map((link) => link.href),
+});
+
 const privacy = {
   en: { title: 'Privacy Policy', href: '/en/privacy-policy/' },
   de: { title: 'Datenschutz', href: '/de/datenschutz/' },
@@ -111,6 +120,8 @@ const privacy = {
     {langs
       .filter((l) => alternates[l])
       .map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l]!, Astro.site)} />)}
+
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
 
   <body class={bodyClass}>
