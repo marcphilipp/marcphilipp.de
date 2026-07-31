@@ -4,6 +4,9 @@ const pages = {
   homepage: '/',
   'german-homepage': '/de/startseite/',
   contact: '/en/contact/',
+  services: '/en/services/',
+  'german-services': '/de/dienstleistungen/',
+  'service-junit': '/en/services/junit/',
   'blog-post': '/blog/2012/03/13/database-tests-with-dbunit-part-1/',
 };
 

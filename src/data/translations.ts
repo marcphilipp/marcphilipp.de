@@ -36,6 +36,13 @@ export const translations = {
       slides: 'Slides',
       recording: 'Recording',
     },
+    services: {
+      index: '/en/services/',
+      contact: '/en/contact/',
+      howICanHelp: 'How can I help you?',
+      getInTouch: 'Get in touch',
+      learnMore: 'Learn more',
+    },
   },
   de: {
     name: 'Deutsch',
@@ -69,6 +76,13 @@ export const translations = {
       code: 'Code',
       slides: 'Folien',
       recording: 'Aufzeichnung',
+    },
+    services: {
+      index: '/de/dienstleistungen/',
+      contact: '/de/kontakt/',
+      howICanHelp: 'Wie kann ich Ihnen helfen?',
+      getInTouch: 'Kontakt aufnehmen',
+      learnMore: 'Mehr erfahren',
     },
   },
 } as const satisfies Record<Lang, unknown>;

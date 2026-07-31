@@ -1,0 +1,40 @@
+---
+import Icon from './Icon.astro';
+import { translations, type Lang } from '../data/translations';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = translations[lang].services;
+---
+
+<div class="cta-banner">
+  <a class="block-link" href={t.contact} aria-hidden="true" tabindex="-1"></a>
+  <div>
+    {
+      lang === 'en' ? (
+        <>
+          <p>
+            <strong>
+              Training and consulting from someone who <em>builds</em> the tools, not just uses
+              them.
+            </strong>
+          </p>
+          <p><em>Let's discuss your project!</em></p>
+        </>
+      ) : (
+        <>
+          <p>
+            <strong>
+              Training und Consulting von jemandem, der die Tools <em>baut</em> — und nicht nur
+              benutzt.
+            </strong>
+          </p>
+          <p>Schreiben Sie mir eine Nachricht, um Ihr Projekt zu besprechen.</p>
+        </>
+      )
+    }
+  </div>
+  <a class="btn btn-success btn-lg" href={t.contact}><Icon name="paper-plane" /> {t.getInTouch}</a>
+</div>

@@ -1,0 +1,37 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'Code hosting',
+    text: 'Migrate from GitHub to Codeberg for open source projects, or to a self-hosted forge for everything else.',
+  },
+  {
+    title: 'Static site hosting',
+    text: 'Move your websites from GitHub Pages etc. to European alternatives such as [statichost.eu](https://statichost.eu).',
+  },
+  {
+    title: 'Cloud infrastructure',
+    text: 'Use Hetzner and other European cloud providers instead of AWS, Azure, and Google Cloud.',
+  },
+];
+---
+
+<ServicePage
+  title="Digital Sovereignty"
+  icon="shield-halved"
+  lang="en"
+  alternates={{
+    en: '/en/services/digital-sovereignty/',
+    de: '/de/dienstleistungen/digitale-souveraenitaet/',
+  }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Regain control of your infrastructure by adopting open source alternatives!
+  </p>
+  <p>
+    Recent developments have made many organizations rethink their reliance on US big tech companies.
+    I have successfully helped organizations migrate their infrastructure to other platforms and providers.
+  </p>
+</ServicePage>

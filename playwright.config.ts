@@ -9,7 +9,8 @@ export default defineConfig({
   reporter: process.env.CI ? 'html' : 'list',
 
   use: {
-    baseURL: 'http://localhost:4321',
+    // Dedicated port so tests never reuse a running `astro dev` server (default port 4321)
+    baseURL: 'http://localhost:4322',
     trace: 'on-first-retry',
   },
 
@@ -24,8 +25,8 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run build && npm run preview',
-    url: 'http://localhost:4321',
+    command: 'npm run build && npm run preview -- --port 4322',
+    url: 'http://localhost:4322',
     reuseExistingServer: !process.env.CI,
   },
 });

@@ -9,14 +9,17 @@ interface Props {
   roles: string[];
   labels: { contact: string; talks: string; projects: string; cv: string };
   links: { contact: string; talks: string };
+  availability: { label: string; href: string };
 }
-const { lang, alternates, roles, labels, links } = Astro.props;
+const { lang, alternates, roles, labels, links, availability } = Astro.props;
 ---
 
 <Layout lang={lang} alternates={alternates} bodyClass="landing-page" showJumbotron={false}>
   <img src="/img/avatar.jpg" alt="Marc Philipp" class="img-circle" style="width:215px; height:215px;" />
 
   <h1>Marc Philipp</h1>
+
+  <p><a class="availability-pill" href={availability.href}>{availability.label}</a></p>
 
   <ul class="lead list-unstyled">
     {roles.map((role) => <li>{role}</li>)}

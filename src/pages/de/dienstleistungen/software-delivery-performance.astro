@@ -1,0 +1,75 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'Build-Performance-Optimierung',
+    text: 'Auf den Build zu warten reißt Ihre Entwicklerinnen und Entwickler aus dem Flow. ' +
+        'Ich zeige Teams, wie sie analysieren können, an welchen ihr Gradle- oder Maven-Build langsam ist, und wie sie ihn beschleunigen können, z. B. mit Build- und Configuration-Caching und anderen modernen Features.',
+  },
+  {
+    title: 'Build-Migrationen & -Upgrades',
+    text: 'Hängen Sie auf einer alten Version von Gradle oder Maven fest, oder nutzen Sie noch die Groovy DSL? Ich helfe Ihnen, Migrationen und Upgrades sicher zu planen und durchzuführen ohne Ihre Feature-Arbeit auszubremsen.',
+  },
+  {
+    title: 'Build Observability',
+    text: 'Was man nicht messen kann, kann man nicht verbessern. Da ich an Develocity mitgearbeitet habe, kann ich Ihnen bei der Einführung helfen (oder bei ähnlichem Tooling), um Einblick in Build-Zeiten, Cache Misses und Testfehler in Ihrer Organisation zu bekommen.',
+  },
+  {
+    title: 'CI-Pipeline-Optimierung',
+    text: 'Pull Requests, die auf CI warten, bremsen das ganze Team aus. ' +
+        'Noch schlimmer: Wenn Builds oder Tests flaky sind, richten Retries zusätzlichen Schaden an. ' +
+        'Ich identifiziere und behebe die Engpässe in Ihren Pipelines, um Feedback-Zyklen zu verkürzen.',
+  },
+  {
+    title: 'Flaky Tests',
+    text: 'Nichts untergräbt das Vertrauen in eine Testsuite so sehr wie Flakiness. Ich helfe Ihnen, Flaky Tests zu identifizieren und schrittweise zu verbessern — dabei kommen oft echte Bugs im Produktionscode ans Licht.',
+  },
+  {
+    title: 'Merge Queues',
+    text: 'Ein roter Main-Branch blockiert alle. ' +
+        'Techniken wie die Merge Queue halten ihn grün, ohne Ihr Team auszubremsen. ' +
+        'Ich habe Merge Queues bereits erfolgreich in großen Monorepos eingeführt und helfe auch Ihnen gerne dabei.',
+  },
+  {
+    title: 'Dependency-Management',
+    text: 'Ihr Dependency-Management in den Griff zu bekommen ist wichtig, damit keine subtilen Bugs in Produktion landen. ' +
+        'Ich helfe Ihrem Team bei der Einführung von Gradle-Platforms und Maven-BOMs. Spätestens beim nächsten Dependency-Upgrade wird sich das auszahlen!',
+  },
+  {
+    title: 'Automatisierte Dependency-Updates',
+    text: 'Tools wie Dependabot und Renovate sind sehr hilfreich, um Dependencies aktuell zu halten und Security-Alerts schnell zu beheben. ' +
+        'Sie in großen Repositories erfolgreich einzusetzen, kann jedoch knifflig sein. ' +
+        'Ich helfe Ihrem Team, eine gute Strategie und einen passenden Prozess dafür zu finden.',
+  },
+];
+---
+
+<ServicePage
+  title="Software Delivery Performance"
+  icon="gauge-high"
+  lang="de"
+  alternates={{
+    en: '/en/services/software-delivery-performance/',
+    de: '/de/dienstleistungen/software-delivery-performance/',
+  }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Langsame Builds, langlaufende CI-Pipelines und Flaky Tests sind kein Naturgesetz.
+  </p>
+  <p>
+    Bei Gradle habe ich Developer-Productivity-Tools selbst mitentwickelt — darunter
+    Build-Caching, Test Distribution und Predictive Test Selection, sowohl für Maven als auch Gradle.
+    Mit dieser Erfahrung helfe ich Ihren Teams, die Performance ihrer gesamten
+    Software-Delivery-Pipeline zu verbessern.
+  </p>
+  <p>
+    Da jedes Team anders ist, besteht ein typisches Engagement aus drei Schritten:
+  </p>
+  <ol>
+    <li>Assessment Ihrer Builds, CI-Pipelines und Tests</li>
+    <li>Priorisierte Empfehlungen mit erwartetem Nutzen</li>
+    <li>Praktische Umsetzung und Wissenstransfer mit Ihrem Team</li>
+  </ol>
+</ServicePage>
