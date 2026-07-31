@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import type { Lang } from '../data/translations';
+import avatar from '../assets/avatar.jpg';
 
 interface Props {
   lang: Lang;
@@ -15,7 +17,7 @@ const { lang, alternates, roles, labels, links, availability } = Astro.props;
 ---
 
 <Layout lang={lang} alternates={alternates} bodyClass="landing-page" showJumbotron={false}>
-  <img src="/img/avatar.jpg" alt="Marc Philipp" class="img-circle" style="width:215px; height:215px;" />
+  <Image src={avatar} alt="Marc Philipp" class="img-circle" width={215} height={215} densities={[1, 2, 3]} loading="eager" fetchpriority="high" />
 
   <h1>Marc Philipp</h1>
 

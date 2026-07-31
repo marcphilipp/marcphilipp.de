@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from './Layout.astro';
+import avatarImage from '../assets/avatar.jpg';
 
-const { title, lang, activeNav, alternates, noindex } = Astro.props.frontmatter;
+const { title, lang, activeNav, alternates, noindex, avatar } = Astro.props.frontmatter;
 ---
 
 <Layout title={title} lang={lang} activeNav={activeNav} alternates={alternates} noindex={noindex}>
+  {avatar && (
+    <Image src={avatarImage} alt="Marc Philipp" class="img-circle pull-right" width={140} height={140} densities={[1, 2]} />
+  )}
   <slot />
 </Layout>

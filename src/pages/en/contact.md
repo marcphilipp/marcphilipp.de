@@ -6,11 +6,10 @@ activeNav: contact
 alternates:
   en: /en/contact/
   de: /de/kontakt/
+avatar: true
 ---
 
 <p class="lead">Let's talk!</p>
-
-<img class="img-circle pull-right" src="/img/avatar.jpg" alt="Marc Philipp" width="140" height="140" />
 
 If you're interested in [working with me](/en/services/), just send me an email — a few lines are enough.
 

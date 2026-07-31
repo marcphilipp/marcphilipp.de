@@ -6,9 +6,8 @@ activeNav: contact
 alternates:
   en: /en/contact/
   de: /de/kontakt/
+avatar: true
 ---
-
-<img class="img-circle pull-right" src="/img/avatar.jpg" alt="Marc Philipp" width="140" height="140" />
 
 <p class="lead">Lassen Sie uns reden!</p>
 
