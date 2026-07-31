@@ -222,6 +222,14 @@ h2 + .services-grid { margin-top: 20px; }
     linear-gradient(rgba(245, 245, 245, 0.65), rgba(245, 245, 245, 0.65)),
     url('/img/congruent_pentagon.png');
   background-size: 300px;
+  transition: border-color 0.15s ease;
+}
+.service-block:hover {
+  border-color: #c9c9c9;
+  /* Weaker wash lets the pattern show through darker */
+  background-image:
+    linear-gradient(rgba(245, 245, 245, 0.45), rgba(245, 245, 245, 0.45)),
+    url('/img/congruent_pentagon.png');
 }
 /* Invisible overlay makes the whole block clickable; the real button sits above it */
 .block-link {
@@ -266,6 +274,12 @@ h2 + .services-grid { margin-top: 20px; }
   background-image: url('/img/congruent_pentagon.png');
   background-size: 300px;
   border-radius: 4px;
+}
+.cta-banner:hover {
+  /* Dark wash over the pattern; the banner has no border to darken */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
+    url('/img/congruent_pentagon.png');
 }
 .cta-banner p { margin: 0; }
 .cta-banner .btn { flex-shrink: 0; margin-left: auto; }
@@ -632,6 +646,7 @@ a.email > span:nth-child(2) {
   border-bottom: 1px solid #ddd;
   object-fit: cover;
   width: 100%;
+  height: auto;
   clip-path: inset(1px);
 }
 .talk .caption {
