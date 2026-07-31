@@ -5,6 +5,7 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
   lang: Lang;
   /** URL of this page in each language it exists in (including the current one). */
   alternates?: Partial<Record<Lang, string>>;
@@ -14,9 +15,15 @@ interface Props {
   showJumbotron?: boolean;
   noindex?: boolean;
 }
+const defaultDescription = {
+  en: 'Marc Philipp — software engineer, JUnit team lead, Java Champion. Independent consultant on JUnit, Gradle, and software delivery performance.',
+  de: 'Marc Philipp — Software Engineer, JUnit Team Lead, Java Champion und Konferenzsprecher. Selbständiger Berater zu JUnit, Gradle und Software Delivery Performance.',
+};
+
 const {
   title,
   lang,
+  description = defaultDescription[lang],
   alternates = {},
   activeNav,
   bodyClass,
@@ -65,7 +72,7 @@ const privacy = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
-    <meta name="description" content="" />
+    <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
 
     <meta property="og:title" content={fullTitle} />
