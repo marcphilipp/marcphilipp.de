@@ -103,8 +103,8 @@ const privacy = {
     <meta name="theme-color" content="#ffffff" />
 
     {langs
-      .filter((l) => l !== lang && alternates[l])
-      .map((l) => <link rel="alternate" hreflang={l} href={alternates[l]} />)}
+      .filter((l) => alternates[l])
+      .map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l]!, Astro.site)} />)}
   </head>
 
   <body class={bodyClass}>
