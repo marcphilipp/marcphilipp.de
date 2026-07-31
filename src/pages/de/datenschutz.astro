@@ -3,6 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import content from '../../data/datenschutz.html?raw';
 ---
 
-<Layout title="Datenschutzerklärung" lang="de">
+<Layout
+  title="Datenschutzerklärung"
+  lang="de"
+  alternates={{ en: '/en/privacy-policy/', de: '/de/datenschutz/' }}
+>
   <Fragment set:html={content} />
 </Layout>

@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  icon?: string;
+}
+const { icon = 'language' } = Astro.props;
+---
+
+<div class="well hint">
+  <Icon name={icon} />
+  <div><slot /></div>
+</div>

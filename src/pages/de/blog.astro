@@ -1,17 +1,14 @@
 ---
 import BlogIndex from '../../components/BlogIndex.astro';
-import Icon from '../../components/Icon.astro';
+import Hint from '../../components/Hint.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="Blog" lang="de" activeNav="blog" alternates={{ en: '/en/blog/', de: '/de/blog/' }}>
   <BlogIndex lang="de">
-    <div class="well blog-hint">
-      <Icon name="language" />
-      <div>
-        Hier sind meine deutschen Blog-Einträge aufgelistet. Falls Sie Englisch sprechen, lohnt
-        sich ein Blick auf meine <a href="/en/blog/">englischen Beiträge</a>.
-      </div>
-    </div>
+    <Hint>
+      Hier sind meine deutschen Blog-Einträge aufgelistet. Falls Sie Englisch sprechen, lohnt
+      sich ein Blick auf meine <a href="/en/blog/">englischen Beiträge</a>.
+    </Hint>
   </BlogIndex>
 </Layout>

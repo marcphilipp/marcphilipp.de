@@ -1,9 +1,9 @@
 ---
 import Layout from './Layout.astro';
 
-const { title, lang, activeNav, alternates } = Astro.props.frontmatter;
+const { title, lang, activeNav, alternates, noindex } = Astro.props.frontmatter;
 ---
 
-<Layout title={title} lang={lang} activeNav={activeNav} alternates={alternates}>
+<Layout title={title} lang={lang} activeNav={activeNav} alternates={alternates} noindex={noindex}>
   <slot />
 </Layout>

@@ -1,0 +1,36 @@
+---
+layout: ../../layouts/MarkdownLayout.astro
+title: Impressum
+lang: de
+noindex: true
+---
+
+import Hint from '../../components/Hint.astro';
+
+{/* set:html keeps the email obfuscated — MDX would decode the entities at compile time */}
+export const email =
+  '<a class="email" href="mailto:&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x40;&#x6D;&#x61;&#x72;&#x63;&#x70;&#x68;&#x69;&#x6C;&#x69;&#x70;&#x70;&#x2E;&#x64;&#x65;">contact@<span>marc</span>philipp.<span>example.</span>de</a>';
+
+<Hint>
+  This legal notice ("Impressum") is required by German law and is therefore only available in
+  German.
+</Hint>
+
+**Marc Philipp**\
+Herrenalber Str. 28a\
+76199 Karlsruhe
+
+_Kontakt:_ <Fragment set:html={email} />
+
+**Steuer-Identifikationsnummern**\
+Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE412510555\
+Wirtschaftsidentifikationsnummer: DE412510555
+
+**Berufsbezeichnung und berufsrechtliche Regelungen**\
+_Berufsbezeichnung:_ Diplom-Informatiker\
+_Verliehen in:_ Deutschland
+
+**Redaktionell verantwortlich**\
+Marc Philipp\
+Herrenalber Str. 28a\
+76199 Karlsruhe

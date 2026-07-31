@@ -1,0 +1,17 @@
+---
+import Hint from '../../components/Hint.astro';
+import Layout from '../../layouts/Layout.astro';
+import content from '../../data/privacy-policy.html?raw';
+---
+
+<Layout
+  title="Privacy Policy"
+  lang="en"
+  alternates={{ en: '/en/privacy-policy/', de: '/de/datenschutz/' }}
+>
+  <Hint>
+    This is a convenience translation of the German <a href="/de/datenschutz/">Datenschutzerklärung</a>.
+    In case of discrepancies, the German version prevails.
+  </Hint>
+  <Fragment set:html={content} />
+</Layout>

@@ -12,6 +12,7 @@ interface Props {
   activeNav?: 'services' | 'blog' | 'talks' | 'contact';
   bodyClass?: string;
   showJumbotron?: boolean;
+  noindex?: boolean;
 }
 const {
   title,
@@ -20,6 +21,7 @@ const {
   activeNav,
   bodyClass,
   showJumbotron = true,
+  noindex = false,
 } = Astro.props;
 
 const siteTitle = 'Marc Philipp';
@@ -50,6 +52,11 @@ const socialLinks = [
 ];
 
 const langs: Lang[] = ['en', 'de'];
+
+const privacy = {
+  en: { title: 'Privacy Policy', href: '/en/privacy-policy/' },
+  de: { title: 'Datenschutz', href: '/de/datenschutz/' },
+}[lang];
 ---
 
 <!doctype html>
@@ -59,6 +66,7 @@ const langs: Lang[] = ['en', 'de'];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content="" />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <meta property="og:title" content={fullTitle} />
     <meta property="og:image" content={new URL('/img/social-preview-image.png', Astro.site)} />
@@ -156,8 +164,11 @@ const langs: Lang[] = ['en', 'de'];
     <footer>
       <div class="container">
         <ul class="footer-nav">
-          <li class:list={{ active: Astro.url.pathname === '/de/datenschutz/' }}>
-            <a href="/de/datenschutz/">Datenschutzerklärung</a>
+          <li class:list={{ active: Astro.url.pathname === '/de/impressum/' }}>
+            <a href="/de/impressum/">{lang === 'en' ? 'Legal' : 'Impressum'}</a>
+          </li>
+          <li class:list={{ active: Astro.url.pathname === privacy.href }}>
+            <a href={privacy.href}>{privacy.title}</a>
           </li>
         </ul>
         <p class="text-muted"><Icon name="copyright" /> {new Date().getFullYear()} {siteTitle}</p>
