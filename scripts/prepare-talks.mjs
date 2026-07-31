@@ -4,7 +4,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, extname, join } from 'node:path';
 import { parse } from 'yaml';
 
-const IMAGE_DIR = 'public/img/talks';
+const IMAGE_DIR = 'src/assets/talks';
 const talks = parse(await readFile('src/data/talks.yml', 'utf8'));
 
 async function findCached(name) {
@@ -48,7 +48,7 @@ for (const talk of talks) {
       continue;
     }
   }
-  talk.slideImage = `img/talks/${file}`;
+  talk.slideImage = file;
 }
 
 talks.sort((a, b) => new Date(a.date) - new Date(b.date));

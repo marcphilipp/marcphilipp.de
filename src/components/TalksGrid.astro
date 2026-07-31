@@ -1,7 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import { translations, formatDate, type Lang } from '../data/translations';
 import talks from '../data/talks.json';
+import placeholder from '../assets/slide_placeholder.png';
+
+const slideImages = import.meta.glob<{ default: ImageMetadata }>('../assets/talks/**/*', {
+  eager: true,
+});
 
 interface Props {
   lang: Lang;
@@ -46,7 +52,9 @@ function location(talk: Talk): string | undefined {
     <h2>{year}</h2>
     <div class="talks-grid">
       {yearTalks.map((talk) => {
-        const image = talk.slideImage ? `/${talk.slideImage}` : '/img/slide_placeholder.png';
+        const image = talk.slideImage
+          ? slideImages[`../assets/talks/${talk.slideImage}`].default
+          : placeholder;
         const links = [
           talk.abstract && { href: talk.abstract, icon: 'align-left', label: t.talks.abstract },
           talk.slides && { href: talk.slides, icon: 'slideshare', label: t.talks.slides },
@@ -61,9 +69,9 @@ function location(talk: Talk): string | undefined {
         return (
           <div class="talk">
             {talk.slides ? (
-              <a href={talk.slides}><img src={image} alt="" /></a>
+              <a href={talk.slides}><Image src={image} alt="" width={450} densities={[1, 2]} /></a>
             ) : (
-              <img src={image} alt="" />
+              <Image src={image} alt="" width={450} densities={[1, 2]} />
             )}
             <div class="caption">
               <p>
