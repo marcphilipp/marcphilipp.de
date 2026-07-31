@@ -1,0 +1,74 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'Build performance optimization',
+    text: 'Waiting for the build breaks your developers’ flow. ' +
+        'I show teams how they can analyze where their Gradle or Maven build spends its time and how to make it fast, e.g., with build and configuration caching and other modern features.',
+  },
+  {
+    title: 'Build migrations & upgrades',
+    text: 'Stuck on an old version of Gradle or Maven, or the Groovy DSL? I can help you plan and execute migrations and upgrades safely, without stopping your feature work.',
+  },
+  {
+    title: 'Build observability',
+    text: 'You can’t fix what you can’t measure. Having helped build Develocity, I help you adopt it (or similar tooling) to get insight into build times, cache misses, and test failures across your organization.',
+  },
+  {
+    title: 'CI pipeline optimization',
+    text: 'Pull requests sitting idle waiting for CI slow the whole team down. ' +
+        'Even worse, when builds or tests are flaky, retries cause additional harm. ' +
+        'I identify and resolve the bottlenecks in your pipelines to shorten feedback cycles.',
+  },
+  {
+    title: 'Flaky tests',
+    text: 'Nothing erodes trust in a test suite like flakiness. I help you identify flaky tests and improve them over time — often uncovering real bugs in production code along the way.',
+  },
+  {
+    title: 'Merge queues',
+    text: 'A red main branch blocks everyone. ' +
+        'Techniques like the merge queue keep it green without slowing your team down. ' +
+        'I have successfully introduced merge queues for large monorepos in the past and can help you, too.',
+  },
+  {
+    title: 'Dependency management',
+    text: 'Getting your dependency management under control is important to avoid subtle bugs ending up in production. ' +
+        'I\'ll help your team adopt Gradle platforms and Maven BOMs, which will pay off the next time you need to upgrade a dependency.',
+  },
+  {
+    title: 'Automated dependency updates',
+    text: 'Tools like Dependabot and Renovate can be very helpful for keeping dependencies up-to-date and resolving security alerts quickly. ' +
+        'Using them successfully in large repositories can be tricky, though. ' +
+        'I can help your team find a good strategy and a process to make it work.',
+  },
+];
+---
+
+<ServicePage
+  title="Software Delivery Performance"
+  icon="gauge-high"
+  lang="en"
+  alternates={{
+    en: '/en/services/software-delivery-performance/',
+    de: '/de/dienstleistungen/software-delivery-performance/',
+  }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Slow builds, long-running CI pipelines, and flaky tests are not a fact of life.
+  </p>
+  <p>At Gradle, I
+    helped build the developer productivity tools themselves, such as build caching, Test Distribution,
+    and Predictive Test Selection, for both Maven and Gradle. With that experience, I can help your teams
+    improve the performance of their entire software delivery pipeline.
+  </p>
+  <p>
+      Since every team is different, a typical engagement has three steps:
+    </p>
+      <ol>
+    <li>Assessment of your builds, CI pipelines, and tests</li>
+    <li>Prioritized recommendations with expected impact</li>
+    <li>Hands-on implementation and knowledge transfer with your team</li>
+    </ol>
+</ServicePage>

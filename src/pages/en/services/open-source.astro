@@ -1,0 +1,35 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'Contribution program',
+    text: 'I can help you set up a program that allows your developers to successfully contribute to the open source projects your business depends on.',
+  },
+  {
+    title: 'Open sourcing guidelines',
+    text: 'Guidelines for open sourcing your own libraries and frameworks are essential for compliance reasons and need to be coordinated with your legal team.',
+  },
+  {
+    title: 'Visibility & PR strategy',
+    text: 'The best open source strategy is worthless if nobody knows about it. ' +
+        'Together, we build a PR strategy around your open source work, with an engineering blog and social media presence.',
+  },
+];
+---
+
+<ServicePage
+  title="Open Source"
+  icon="code-branch"
+  lang="en"
+  alternates={{ en: '/en/services/open-source/', de: '/de/dienstleistungen/open-source/' }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Define a successful open source strategy and put it into practice!
+  </p>
+  <p>
+    Open source is an essential part of modern software development.
+    I help you set up a program so your organization contributes to open source, publishes its own software, and benefits from it in a sustainable way.
+  </p>
+</ServicePage>

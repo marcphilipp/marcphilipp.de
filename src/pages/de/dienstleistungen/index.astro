@@ -1,0 +1,82 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import CtaBanner from '../../../components/CtaBanner.astro';
+import { translations } from '../../../data/translations';
+
+const t = translations.de.services;
+
+const services = [
+  {
+    icon: 'gauge-high',
+    title: 'Software Delivery Performance',
+    href: '/de/dienstleistungen/software-delivery-performance/',
+    text: 'Verbessern Sie Developer Experience und Produktivität: Beschleunigen Sie Ihre Builds, stabilisieren Sie Ihre CI-Pipelines, eliminieren Sie Flaky Tests und machen Sie automatisierte Dependency-Updates für Ihr Team nutzbar.',
+  },
+  {
+    icon: 'junit-diamond',
+    title: 'JUnit-Training & -Consulting',
+    href: '/de/dienstleistungen/junit/',
+    text: 'Holen Sie mit Training direkt vom JUnit-Team-Lead das Meiste aus JUnit heraus — inklusive des Ökosystems mit AssertJ, Mockito, WireMock und Testcontainers.',
+  },
+  {
+    icon: 'shield-halved',
+    title: 'Digitale Souveränität',
+    href: '/de/dienstleistungen/digitale-souveraenitaet/',
+    text: 'Reduzieren Sie Ihre Abhängigkeit von US-Konzernen durch europäische und Open-Source-Alternativen — vom Code-Hosting bis zur Cloud-Infrastruktur.',
+  },
+  {
+    icon: 'code-branch',
+    title: 'Open Source',
+    href: '/de/dienstleistungen/open-source/',
+    text: 'Ermöglichen Sie Ihren Entwicklerinnen und Entwicklern erfolgreiche Open-Source-Beiträge, veröffentlichen Sie eigene Bibliotheken richtig und machen Sie Ihre Arbeit sichtbar.',
+  },
+];
+---
+
+<Layout
+  title="Dienstleistungen"
+  lang="de"
+  activeNav="services"
+  alternates={{ en: '/en/services/', de: '/de/dienstleistungen/' }}
+>
+  <p class="lead">
+    Ich biete Training und Consulting für Software-Teams — auf Basis von zwei Jahrzehnten Erfahrung
+    in Open Source und Industrie.
+  </p>
+
+  <p>
+    Ich bin seit über einem Jahrzehnt Teil des <a href="https://junit.org/">JUnit</a>-Teams und
+    leite es seit 2016. Ich habe die Crowdfunding-Kampagne initiiert, mit der die
+    Entwicklung von JUnit 5 finanziert wurde, und gestalte das Framework seitdem maßgeblich mit.
+    Für diese Arbeit wurde ich
+    als <a href="https://javachampions.org/">Java Champion</a> ausgezeichnet.
+  </p>
+  <p>
+    Zuletzt habe ich als Senior Principal Software Engineer
+    bei <a href="https://gradle.com/">Gradle</a> große Entwicklungsorganisationen dabei unterstützt,
+    ihre Produktivität zu steigern — unter anderem mit Build-Caching, Test Distribution und
+    Predictive Test Selection. Heute biete ich als unabhängiger Berater Trainings und Consulting an
+    und halte regelmäßig <a href="/de/vortraege/">Vorträge</a> auf Konferenzen.
+  </p>
+
+  <div class="services-grid">
+    {services.map((service) => (
+      <div class="service-block well">
+        <a class="block-link" href={service.href} aria-hidden="true" tabindex="-1"></a>
+        <Icon name={service.icon} />
+        <div>
+          <h3>{service.title}</h3>
+          <p>{service.text}</p>
+          <p>
+            <a href={service.href} class="btn btn-default">
+              {t.learnMore} <Icon name="chevron-right" />
+            </a>
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <CtaBanner lang="de" />
+</Layout>

@@ -1,0 +1,39 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'Code-Hosting',
+    text: 'Migration von GitHub zu Codeberg für Open-Source-Projekte oder zu einer selbst gehosteten Lösung für alles andere.',
+  },
+  {
+    title: 'Statisches Website-Hosting',
+    text: 'Umzug Ihrer Websites von GitHub Pages etc. zu europäischen Alternativen wie [statichost.eu](https://statichost.eu).',
+  },
+  {
+    title: 'Cloud-Infrastruktur',
+    text: 'Hetzner und andere europäische Cloud-Anbieter statt AWS, Azure und Google Cloud nutzen.',
+  },
+];
+---
+
+<ServicePage
+  title="Digitale Souveränität"
+  icon="shield-halved"
+  lang="de"
+  alternates={{
+    en: '/en/services/digital-sovereignty/',
+    de: '/de/dienstleistungen/digitale-souveraenitaet/',
+  }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Gewinnen Sie mit Open-Source-Alternativen die Kontrolle über Ihre digitale Infrastruktur zurück!
+  </p>
+  <p>
+    Die jüngsten Entwicklungen haben viele Organisationen dazu gebracht, ihre Abhängigkeit von
+    US-Konzernen zu überdenken.
+    Ich habe bereits mehrere Organisationen erfolgreich bei der Migration ihrer Infrastruktur auf
+    andere Plattformen und Anbieter unterstützt.
+  </p>
+</ServicePage>

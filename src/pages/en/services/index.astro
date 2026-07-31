@@ -1,0 +1,81 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import CtaBanner from '../../../components/CtaBanner.astro';
+import { translations } from '../../../data/translations';
+
+const t = translations.en.services;
+
+const services = [
+  {
+    icon: 'gauge-high',
+    title: 'Software Delivery Performance',
+    href: '/en/services/software-delivery-performance/',
+    text: 'Improve developer experience and productivity: speed up your builds, stabilize your CI pipelines, eliminate flaky tests, and make automated dependency updates work for your team.',
+  },
+  {
+    icon: 'junit-diamond',
+    title: 'JUnit Training & Consulting',
+    href: '/en/services/junit/',
+    text: 'Get the most out of JUnit with training straight from the JUnit team lead — including the ecosystem around it, such as AssertJ, Mockito, WireMock, and Testcontainers.',
+  },
+  {
+    icon: 'shield-halved',
+    title: 'Digital Sovereignty',
+    href: '/en/services/digital-sovereignty/',
+    text: 'Reduce your dependency on US big tech companies by adopting European and open source alternatives — from code hosting to cloud infrastructure.',
+  },
+  {
+    icon: 'code-branch',
+    title: 'Open Source',
+    href: '/en/services/open-source/',
+    text: 'Enable your developers to contribute to open source successfully, open source your own libraries the right way, and make your engineering work visible.',
+  },
+];
+---
+
+<Layout
+  title="Services"
+  lang="en"
+  activeNav="services"
+  alternates={{ en: '/en/services/', de: '/de/dienstleistungen/' }}
+>
+  <p class="lead">
+    I offer training and consulting for software teams, built on two decades of experience in open
+    source and industry.
+  </p>
+
+  <p>
+    I have been part of the <a href="https://junit.org/">JUnit</a> team for over a decade and have
+    led it since 2016. I initiated the crowdfunding campaign that kicked off the development of
+    JUnit 5 and have been shaping the framework ever since. For this work, I was honored as
+    a <a href="https://javachampions.org/">Java Champion</a>.
+  </p>
+  <p>
+    In industry, I most recently worked as a Senior Principal Software Engineer
+    at <a href="https://gradle.com/">Gradle</a>, where I helped large engineering organizations
+    improve developer productivity with build caching, Test Distribution, and Predictive Test
+    Selection. Today, I offer training and consulting as an independent consultant and regularly
+    give <a href="/en/talks/">talks</a> at conferences.
+  </p>
+
+  <div class="services-grid">
+    {services.map((service) => (
+      <div class="service-block well">
+        <a class="block-link" href={service.href} aria-hidden="true" tabindex="-1"></a>
+        <Icon name={service.icon} />
+        <div>
+          <h3>{service.title}</h3>
+          <p>{service.text}</p>
+          <p>
+            <a href={service.href} class="btn btn-default">
+              {t.learnMore} <Icon name="chevron-right" />
+            </a>
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <CtaBanner lang="en" />
+</Layout>

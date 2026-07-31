@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from './CtaBanner.astro';
+import Icon from './Icon.astro';
+import { translations, type Lang } from '../data/translations';
+
+interface Props {
+  title: string;
+  /** Category icon from the services overview, shown large next to the intro. */
+  icon: string;
+  lang: Lang;
+  alternates: Partial<Record<Lang, string>>;
+  blocks: {
+    title: string;
+    text: string;
+    items?: string[];
+    /** Render items as a numbered list (e.g. process steps). */
+    ordered?: boolean;
+    link?: { href: string; text: string };
+    /** Span two rows in the grid (for tall blocks). */
+    tall?: boolean;
+  }[];
+}
+const { title, icon, lang, alternates, blocks } = Astro.props;
+const t = translations[lang].services;
+
+/** Inline Markdown for block text: links, bold, code. ponytail: swap in remark if block-level Markdown is ever needed */
+const md = (text: string) =>
+  text
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+---
+
+<Layout title={title} lang={lang} activeNav="services" alternates={alternates}>
+  <Icon name={icon} class="service-icon" />
+  <slot />
+
+  <h2>{t.howICanHelp}</h2>
+  <div class="services-grid">
+    {blocks.map((block) => (
+      <div class:list={['service-block', 'well', { tall: block.tall }]}>
+        <div>
+          <h3>{block.title}</h3>
+          {block.text.split(/\n\s*\n/).map((paragraph) => <p set:html={md(paragraph)} />)}
+          {block.items && block.ordered && (
+            <ol>
+              {block.items.map((item) => <li set:html={md(item)} />)}
+            </ol>
+          )}
+          {block.items && !block.ordered && (
+            <ul>
+              {block.items.map((item) => <li set:html={md(item)} />)}
+            </ul>
+          )}
+          {block.link && (
+            <p>
+              <a href={block.link.href} class="btn btn-default">
+                {block.link.text} <Icon name="chevron-right" />
+              </a>
+            </p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <CtaBanner lang={lang} />
+</Layout>

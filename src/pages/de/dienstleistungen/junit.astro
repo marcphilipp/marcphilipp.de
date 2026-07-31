@@ -1,0 +1,47 @@
+---
+import ServicePage from '../../../components/ServicePage.astro';
+
+const blocks = [
+  {
+    title: 'JUnit-Training',
+    tall: true,
+    text: 'Ein praxisnahes Training (typischerweise 1-2 Tage), von den Grundlagen bis zu fortgeschrittenen Features, abgestimmt auf den Wissensstand Ihres Teams.\n\n**Eine typische Agenda:**',
+    items: [
+      'Test-Lifecycle, Assertions, Display Names, Tags',
+      'Parametrisierte Tests und Klassen',
+      'Wiederholte und dynamische Tests',
+      'Parallele Testausführung',
+      'Registrierung von Extensions und eingebaute Extensions',
+      'Eigene Extensions schreiben',
+      'Optionale Module: AssertJ, Mockito, WireMock und Testcontainers',
+    ],
+  },
+  {
+    title: 'JUnit-Consulting',
+    text: 'Gemeinsam identifizieren wir Antipatterns in Ihrer Testsuite und verbessern ihre Struktur, Lesbarkeit und Laufzeit. Durch Code-Reviews und Pair Programming wenden wir das Gelernte aus dem Training an.',
+  },
+  {
+    title: 'Support & Care',
+    text: 'In Kooperation mit [Open Elements](https://open-elements.com) biete ich kommerziellen Support für JUnit an. Alle ungenutzten Support-Stunden fließen direkt in meine Arbeit an JUnit!',
+    link: { href: 'https://open-elements.com/support-care', text: 'Mehr erfahren' },
+  },
+];
+---
+
+<ServicePage
+  title="JUnit-Training & -Consulting"
+  icon="junit-diamond"
+  lang="de"
+  alternates={{ en: '/en/services/junit/', de: '/de/dienstleistungen/junit/' }}
+  blocks={blocks}
+>
+  <p class="lead">
+    Holen Sie das Meiste aus JUnit und Test-Driven Development heraus!
+  </p>
+  <p>
+    Als JUnit-Team-Lead kenne ich das Framework in- und auswendig.
+    Ob Sie von JUnit 4 migrieren oder Ihr Team das volle Potenzial von JUnit Jupiter ausschöpfen
+    möchte — ich biete praxisnahes Training und Consulting, zugeschnitten auf Ihr Team und Ihre
+    Codebasis.
+  </p>
+</ServicePage>

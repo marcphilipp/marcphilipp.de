@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 24px 0 12px;
 }
 h1 { font-size: 41px; }
-h2 { font-size: 34px; }
+h2 { font-size: 30px; }
 h3 { font-size: 28px; }
 h4 { font-size: 20px; margin: 12px 0; }
 h1 small, h2 small, h3 small {
@@ -55,6 +55,7 @@ h1 small, h2 small, h3 small {
 
 p {
   margin: 0 0 12px;
+  text-wrap: pretty;
 }
 
 a {
@@ -199,6 +200,75 @@ pre code {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .well :last-child { margin-bottom: 0; }
+
+/* Service blocks (services overview page) */
+.services-grid {
+  display: grid;
+  gap: 20px;
+  margin: 40px 0;
+}
+h2 + .services-grid { margin-top: 20px; }
+@media (min-width: 768px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid .tall { grid-row: span 2; }
+}
+.service-block {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 0;
+  /* Wash of the well color over the pattern to soften it */
+  background-image:
+    linear-gradient(rgba(245, 245, 245, 0.65), rgba(245, 245, 245, 0.65)),
+    url('/img/congruent_pentagon.png');
+  background-size: 300px;
+}
+/* Invisible overlay makes the whole block clickable; the real button sits above it */
+.block-link {
+  position: absolute;
+  inset: 0;
+}
+.service-block .btn,
+.cta-banner .btn {
+  position: relative;
+}
+.service-block > .icon {
+  flex-shrink: 0;
+  font-size: 2em;
+  color: var(--brand-primary);
+}
+/* Cards show all icons monochrome, even ones with own colors (e.g. the JUnit logo) */
+.service-block > .icon svg path {
+  fill: currentColor;
+}
+.service-block h3 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+/* Large category icon on service subpages */
+.service-icon {
+  float: right;
+  margin: 0 0 12px 20px;
+  font-size: 80px;
+  color: var(--brand-primary);
+}
+.cta-banner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: var(--jumbotron-bg);
+  background-image: url('/img/congruent_pentagon.png');
+  background-size: 300px;
+  border-radius: 4px;
+}
+.cta-banner p { margin: 0; }
+.cta-banner .btn { flex-shrink: 0; margin-left: auto; }
 
 /* Navbar */
 .site-header .navbar {
@@ -452,6 +522,28 @@ body.landing-page {
     transform: translate(-50%, -50%);
   }
 }
+.availability-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  color: var(--text-color);
+  background-color: #fff;
+  font-size: 14px;
+}
+.availability-pill:hover {
+  background-color: #e6e6e6;
+  text-decoration: none;
+}
+.availability-pill::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-success);
+}
+
 .landing-page footer { background-color: rgba(36, 62, 106, 0.5); }
 .landing-page footer .text-muted { color: #84a3d5; }
 
@@ -488,6 +580,37 @@ article { margin-bottom: 20px; }
 /* Obfuscated email link: hide the decoy segment */
 a.email > span:nth-child(2) {
   display: none;
+}
+
+/* Contact page actions: email button + copy-address text link */
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+.copy-email {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 20px; /* same as .btn-lg */
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.copy-email:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+.copy-email::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 6px;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  mask: url('/img/copy.svg') no-repeat center / contain;
 }
 
 /* Talks */
