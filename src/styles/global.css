@@ -392,8 +392,8 @@ h2 + .services-grid { margin-top: 20px; }
   }
   .navbar .social .icon svg { display: block; }
   .navbar .social.github > a { color: #000; }
+  .navbar .social.codeberg > a { color: #2185d0; }
   .navbar .social.linkedin > a { color: #007bb6; }
-  .navbar .social.xing > a { color: #006567; }
   .navbar .social.mastodon > a { color: #5b4fe5; }
   .navbar .social.bluesky > a { color: #0085ff; }
   .navbar .social > a:hover { background-color: currentColor; }
