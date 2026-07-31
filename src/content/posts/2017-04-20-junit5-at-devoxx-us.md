@@ -9,12 +9,8 @@ ref: post-junit5-at-devoxx-us-2017
 
 <div class="lead">
 
-A few weeks ago, I attended [Devoxx US](http://cfp.devoxx.us/2017/talk/ZCD-4979/JUnit_5_-_The_New_Testing_Framework_for_Java_and_Platform_for_the_JVM) in San Jose, CA, and gave a talk about [JUnit 5](http://junit.org/junit5/). The recording is now available on YouTube.<!--more-->
+A few weeks ago, I attended [Devoxx US](http://cfp.devoxx.us/2017/talk/ZCD-4979/JUnit_5_-_The_New_Testing_Framework_for_Java_and_Platform_for_the_JVM) in San Jose, CA, and gave a talk about [JUnit 5](http://junit.org/junit5/). The recording is now available on [YouTube](https://www.youtube.com/watch?v=0qI6_NKFQsY).<!--more-->
 
-</div>
-
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe src="https://yewtu.be/embed/0qI6_NKFQsY" frameborder="0" allowfullscreen></iframe>
 </div>
 
 ## Abstract
@@ -47,5 +43,3 @@ class SimpleTest {
 ## Slides
 
 The slides are available on [SpeakerDeck](https://speakerdeck.com/marcphilipp/junit-5-the-new-testing-framework-for-java-and-platform-for-the-jvm).
-
-<script async class="speakerdeck-embed" data-id="7f3a63c8ecbb4bd98f4878fab2e07b09" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
