@@ -6,6 +6,9 @@ import { translations } from '../../../data/translations';
 
 const t = translations.de.services;
 
+const lead =
+  'Ich biete Training und Consulting für Software-Teams, auf Basis von zwei Jahrzehnten Erfahrung in Open Source und Industrie.';
+
 const services = [
   {
     icon: 'gauge-high',
@@ -36,14 +39,12 @@ const services = [
 
 <Layout
   title="Dienstleistungen"
+  description={lead}
   lang="de"
   activeNav="services"
   alternates={{ en: '/en/services/', de: '/de/dienstleistungen/' }}
 >
-  <p class="lead">
-    Ich biete Training und Consulting für Software-Teams, auf Basis von zwei Jahrzehnten Erfahrung
-    in Open Source und Industrie.
-  </p>
+  <p class="lead">{lead}</p>
 
   <p>
     Ich bin seit über einem Jahrzehnt Teil des <a href="https://junit.org/">JUnit</a>-Teams und

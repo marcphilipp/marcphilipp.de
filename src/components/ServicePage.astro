@@ -6,6 +6,8 @@ import { translations, type Lang } from '../data/translations';
 
 interface Props {
   title: string;
+  /** Lead paragraph, also used as the meta description. */
+  lead: string;
   /** Category icon from the services overview, shown large next to the intro. */
   icon: string;
   lang: Lang;
@@ -21,7 +23,7 @@ interface Props {
     tall?: boolean;
   }[];
 }
-const { title, icon, lang, alternates, blocks } = Astro.props;
+const { title, lead, icon, lang, alternates, blocks } = Astro.props;
 const t = translations[lang].services;
 
 /** Inline Markdown for block text: links, bold, code. ponytail: swap in remark if block-level Markdown is ever needed */
@@ -32,8 +34,9 @@ const md = (text: string) =>
     .replace(/`([^`]+)`/g, '<code>$1</code>');
 ---
 
-<Layout title={title} lang={lang} activeNav="services" alternates={alternates}>
+<Layout title={title} description={lead} lang={lang} activeNav="services" alternates={alternates}>
   <Icon name={icon} class="service-icon" />
+  <p class="lead">{lead}</p>
   <slot />
 
   <h2>{t.howICanHelp}</h2>

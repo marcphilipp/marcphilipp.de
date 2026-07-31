@@ -23,13 +23,19 @@ const defaultDescription = {
 const {
   title,
   lang,
-  description = defaultDescription[lang],
+  description: rawDescription = defaultDescription[lang],
   alternates = {},
   activeNav,
   bodyClass,
   showJumbotron = true,
   noindex = false,
 } = Astro.props;
+
+// Search engines truncate snippets around 160 characters.
+const description =
+  rawDescription.length > 160
+    ? rawDescription.slice(0, 157).replace(/\s+\S*$/, '') + '…'
+    : rawDescription;
 
 const siteTitle = 'Marc Philipp';
 const fullTitle = title ? `${title} • ${siteTitle}` : siteTitle;
