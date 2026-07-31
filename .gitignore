@@ -4,3 +4,7 @@ dist/
 .astro/
 /src/data/talks.json
 /public/img/talks/
+
+# playwright test artifacts
+playwright-report/
+test-results/
