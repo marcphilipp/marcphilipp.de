@@ -506,6 +506,12 @@ h2 + .services-grid { margin-top: 20px; }
   background-size: 300px;
   background-position: left top -50px;
 }
+.jumbotron .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .jumbotron h1 {
   margin: 10px 0;
 }

@@ -1,10 +1,12 @@
 ---
+import { Rss } from '@lucide/astro';
 import BlogIndex from '../../components/BlogIndex.astro';
 import LanguageHint from '../../components/LanguageHint.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="Blog" lang="de" activeNav="blog" alternates={{ en: '/en/blog/', de: '/de/blog/' }}>
+  <a slot="header-actions" href="/feed.xml" class="btn btn-default"><Rss /> RSS</a>
   <BlogIndex lang="de">
     <LanguageHint>
       Hier sind meine deutschen Blog-Einträge aufgelistet. Falls Sie Englisch sprechen, lohnt

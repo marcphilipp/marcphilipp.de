@@ -7,8 +7,6 @@ export const translations = {
     blog: {
       index: '/en/blog/',
       read_on: 'Read on',
-      subscribe: 'Subscribe',
-      via_rss: 'via RSS',
     },
     cities: {
       Anvers: 'Antwerp',
@@ -50,8 +48,6 @@ export const translations = {
     blog: {
       index: '/de/blog/',
       read_on: 'Weiterlesen',
-      subscribe: 'Abonnieren',
-      via_rss: 'per RSS',
     },
     cities: {
       Anvers: 'Antwerpen',

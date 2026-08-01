@@ -41,7 +41,3 @@ const posts = (await getCollection('posts', (post) => post.data.lang === lang)).
     </>
   );
 })}
-
-<hr />
-
-<p>{t.blog.subscribe} <a href="/feed.xml">{t.blog.via_rss}</a></p>
