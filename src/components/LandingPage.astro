@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import Icon from './Icon.astro';
+import { Mail, Mic } from '@lucide/astro';
+import BrandIcon from './BrandIcon.astro';
 import Layout from '../layouts/Layout.astro';
 import type { Lang } from '../data/translations';
 import avatar from '../assets/avatar.jpg';
@@ -28,9 +29,9 @@ const { lang, alternates, roles, labels, links, availability } = Astro.props;
   </ul>
 
   <div class="btn-group" role="group" style="min-width: 200px">
-    <a class="btn btn-success" href={links.contact} role="button"><Icon name="envelope" /> {labels.contact}</a>
-    <a class="btn btn-default" href={links.talks} role="button"><Icon name="microphone" /> <span class="hidden-xs">{labels.talks}</span></a>
-    <a class="btn btn-default" href="https://github.com/marcphilipp" role="button"><Icon name="github" /> <span class="hidden-xs">{labels.projects}</span></a>
-    <a class="btn btn-default" href="https://www.linkedin.com/in/marcphilipp" role="button"><Icon name="linkedin" /> <span class="hidden-xs">{labels.cv}</span></a>
+    <a class="btn btn-success" href={links.contact} role="button"><Mail /> {labels.contact}</a>
+    <a class="btn btn-default" href={links.talks} role="button"><Mic /> <span class="hidden-xs">{labels.talks}</span></a>
+    <a class="btn btn-default" href="https://github.com/marcphilipp" role="button"><BrandIcon name="github" /> <span class="hidden-xs">{labels.projects}</span></a>
+    <a class="btn btn-default" href="https://www.linkedin.com/in/marcphilipp" role="button"><BrandIcon name="linkedin" /> <span class="hidden-xs">{labels.cv}</span></a>
   </div>
 </Layout>

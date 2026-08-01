@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import Icon from './Icon.astro';
+import { CirclePlay, FileCode, Presentation, TextAlignStart } from '@lucide/astro';
 import { translations, formatDate, type Lang } from '../data/translations';
 import talks from '../data/talks.json';
 import placeholder from '../assets/slide_placeholder.png';
@@ -56,15 +56,15 @@ function location(talk: Talk): string | undefined {
           ? slideImages[`../assets/talks/${talk.slideImage}`].default
           : placeholder;
         const links = [
-          talk.abstract && { href: talk.abstract, icon: 'align-left', label: t.talks.abstract },
-          talk.slides && { href: talk.slides, icon: 'slideshare', label: t.talks.slides },
-          talk.code && { href: talk.code, icon: 'file-code', label: t.talks.code },
+          talk.abstract && { href: talk.abstract, icon: TextAlignStart, label: t.talks.abstract },
+          talk.slides && { href: talk.slides, icon: Presentation, label: t.talks.slides },
+          talk.code && { href: talk.code, icon: FileCode, label: t.talks.code },
           talk.youtube && {
             href: `https://www.youtube.com/watch?v=${talk.youtube}`,
-            icon: 'circle-play',
+            icon: CirclePlay,
             label: t.talks.recording,
           },
-          talk.recording && { href: talk.recording, icon: 'circle-play', label: t.talks.recording },
+          talk.recording && { href: talk.recording, icon: CirclePlay, label: t.talks.recording },
         ].filter((link) => !!link);
         return (
           <div class="talk">
@@ -89,7 +89,7 @@ function location(talk: Talk): string | undefined {
               <ul class="list-inline talk-links">
                 {links.map((link) => (
                   <li>
-                    <a href={link.href}><Icon name={link.icon} /> {link.label}</a>
+                    <a href={link.href}><link.icon /> {link.label}</a>
                   </li>
                 ))}
               </ul>

@@ -1,15 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CtaBanner from './CtaBanner.astro';
-import Icon from './Icon.astro';
+import { ChevronRight, type AstroComponent } from '@lucide/astro';
+import BrandIcon from './BrandIcon.astro';
 import { translations, type Lang } from '../data/translations';
 
 interface Props {
   title: string;
   /** Lead paragraph, also used as the meta description. */
   lead: string;
-  /** Category icon from the services overview, shown large next to the intro. */
-  icon: string;
+  /** Category icon from the services overview, shown large next to the intro; brand icons are passed by name. */
+  icon: string | AstroComponent;
   lang: Lang;
   alternates: Partial<Record<Lang, string>>;
   blocks: {
@@ -23,7 +24,7 @@ interface Props {
     tall?: boolean;
   }[];
 }
-const { title, lead, icon, lang, alternates, blocks } = Astro.props;
+const { title, lead, icon: IconComponent, lang, alternates, blocks } = Astro.props;
 const t = translations[lang].services;
 
 /** Inline Markdown for block text: links, bold, code. ponytail: swap in remark if block-level Markdown is ever needed */
@@ -35,7 +36,11 @@ const md = (text: string) =>
 ---
 
 <Layout title={title} description={lead} lang={lang} activeNav="services" alternates={alternates}>
-  <Icon name={icon} class="service-icon" />
+  {typeof IconComponent === 'string' ? (
+    <BrandIcon name={IconComponent} class="service-icon" />
+  ) : (
+    <IconComponent class="service-icon" />
+  )}
   <p class="lead">{lead}</p>
   <slot />
 
@@ -59,7 +64,7 @@ const md = (text: string) =>
           {block.link && (
             <p>
               <a href={block.link.href} class="btn btn-default">
-                {block.link.text} <Icon name="chevron-right" />
+                {block.link.text} <ChevronRight />
               </a>
             </p>
           )}

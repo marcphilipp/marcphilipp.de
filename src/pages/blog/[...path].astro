@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Icon from '../../components/Icon.astro';
+import { ChevronLeft, ChevronRight } from '@lucide/astro';
 import Layout from '../../layouts/Layout.astro';
 import { formatDate, type Lang } from '../../data/translations';
 import { postPath } from '../../data/posts';
@@ -53,12 +53,12 @@ const next = relevant.find((other) => other.data.date > post.data.date);
       <ul class="pagination">
         {previous && (
           <li>
-            <a href={postPath(previous)}><Icon name="chevron-left" /> {previous.data.title}</a>
+            <a href={postPath(previous)}><ChevronLeft /> {previous.data.title}</a>
           </li>
         )}
         {next && (
           <li>
-            <a href={postPath(next)}>{next.data.title} <Icon name="chevron-right" /></a>
+            <a href={postPath(next)}>{next.data.title} <ChevronRight /></a>
           </li>
         )}
       </ul>

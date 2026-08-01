@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import { Send } from '@lucide/astro';
 import { translations, type Lang } from '../data/translations';
 
 interface Props {
@@ -36,5 +36,5 @@ const t = translations[lang].services;
       )
     }
   </div>
-  <a class="btn btn-success btn-lg" href={t.contact}><Icon name="paper-plane" /> {t.getInTouch}</a>
+  <a class="btn btn-success btn-lg" href={t.contact}><Send /> {t.getInTouch}</a>
 </div>

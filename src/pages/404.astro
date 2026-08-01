@@ -1,13 +1,13 @@
 ---
-import Icon from '../components/Icon.astro';
+import { ChevronRight, TriangleAlert } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Page Not Found" lang="en">
   <small slot="subtitle">HTTP 404</small>
   <div class="alert alert-danger" role="alert">
-    <Icon name="triangle-exclamation" /> Sorry, this page does not exist.
+    <TriangleAlert /> Sorry, this page does not exist.
   </div>
 
-  <p><a href="/" class="btn btn-lg btn-success">Start Over <Icon name="chevron-right" /></a></p>
+  <p><a href="/" class="btn btn-lg btn-success">Start Over <ChevronRight /></a></p>
 </Layout>

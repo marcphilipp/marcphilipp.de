@@ -1,5 +1,6 @@
 ---
-import Icon from '../components/Icon.astro';
+import { Copyright, Languages, Moon, Sun } from '@lucide/astro';
+import BrandIcon from '../components/BrandIcon.astro';
 import { translations, type Lang } from '../data/translations';
 import '../styles/global.css';
 
@@ -154,7 +155,7 @@ const privacy = {
           <ul class="navbar-right">
             <li class="language-menu">
               <details>
-                <summary aria-label={`${lang === 'en' ? 'Language' : 'Sprache'}: ${translations[lang].name}`}><Icon name="language" /> {translations[lang].name}</summary>
+                <summary aria-label={`${lang === 'en' ? 'Language' : 'Sprache'}: ${translations[lang].name}`}><Languages /> {translations[lang].name}</summary>
                 <ul class="dropdown-menu">
                   {langs.map((l) =>
                     l === lang ? (
@@ -174,8 +175,8 @@ const privacy = {
                 class="theme-toggle"
                 aria-label={lang === 'en' ? 'Toggle dark mode' : 'Dunkelmodus umschalten'}
               >
-                <Icon name="moon" class="moon" />
-                <Icon name="sun" class="sun" />
+                <Moon class="moon" />
+                <Sun class="sun" />
               </button>
             </li>
           </ul>
@@ -210,12 +211,12 @@ const privacy = {
           {socialLinks.map((link) => (
             <li class:list={['social', link.key]}>
               <a rel={link.me ? 'me' : undefined} href={link.href} title={link.title}>
-                <Icon name={link.key} />
+                <BrandIcon name={link.key} />
               </a>
             </li>
           ))}
         </ul>
-        <p class="text-muted"><Icon name="copyright" /> {new Date().getFullYear()} {siteTitle}</p>
+        <p class="text-muted"><Copyright /> {new Date().getFullYear()} {siteTitle}</p>
       </div>
     </footer>
 

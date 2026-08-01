@@ -1,4 +1,5 @@
 ---
+import { GitPullRequestArrow } from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
@@ -21,7 +22,7 @@ const blocks = [
 <ServicePage
   title="Open Source"
   lead="Definieren Sie eine erfolgreiche Open-Source-Strategie und setzen Sie sie in die Praxis um!"
-  icon="code-branch"
+  icon={GitPullRequestArrow}
   lang="de"
   alternates={{ en: '/en/services/open-source/', de: '/de/dienstleistungen/open-source/' }}
   blocks={blocks}

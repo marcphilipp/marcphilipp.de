@@ -1,4 +1,5 @@
 ---
+import { ShieldCheck } from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
@@ -20,7 +21,7 @@ const blocks = [
 <ServicePage
   title="Digitale Souveränität"
   lead="Gewinnen Sie mit Open-Source-Alternativen die Kontrolle über Ihre digitale Infrastruktur zurück!"
-  icon="shield-halved"
+  icon={ShieldCheck}
   lang="de"
   alternates={{
     en: '/en/services/digital-sovereignty/',

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Icon from '../../../components/Icon.astro';
+import { ChevronRight, GitPullRequestArrow, Rocket, ShieldCheck } from '@lucide/astro';
+import BrandIcon from '../../../components/BrandIcon.astro';
 import CtaBanner from '../../../components/CtaBanner.astro';
 import { translations } from '../../../data/translations';
 
@@ -11,25 +12,25 @@ const lead =
 
 const services = [
   {
-    icon: 'gauge-high',
+    icon: Rocket,
     title: 'Software Delivery Performance',
     href: '/de/dienstleistungen/software-delivery-performance/',
     text: 'Verbessern Sie Developer Experience und Produktivität: Beschleunigen Sie Ihre Builds, stabilisieren Sie Ihre CI-Pipelines, eliminieren Sie Flaky Tests und machen Sie automatisierte Dependency-Updates für Ihr Team nutzbar.',
   },
   {
-    icon: 'junit-diamond',
+    icon: 'junit',
     title: 'JUnit-Training & -Consulting',
     href: '/de/dienstleistungen/junit/',
     text: 'Holen Sie mit Training direkt vom JUnit-Team-Lead das Meiste aus JUnit heraus — inklusive des Ökosystems mit AssertJ, Mockito, WireMock und Testcontainers.',
   },
   {
-    icon: 'shield-halved',
+    icon: ShieldCheck,
     title: 'Digitale Souveränität',
     href: '/de/dienstleistungen/digitale-souveraenitaet/',
     text: 'Reduzieren Sie Ihre Abhängigkeit von US-Konzernen durch europäische und Open-Source-Alternativen — vom Code-Hosting bis zur Cloud-Infrastruktur.',
   },
   {
-    icon: 'code-branch',
+    icon: GitPullRequestArrow,
     title: 'Open Source',
     href: '/de/dienstleistungen/open-source/',
     text: 'Ermöglichen Sie Ihren Entwicklerinnen und Entwicklern erfolgreiche Open-Source-Beiträge, veröffentlichen Sie eigene Bibliotheken richtig und machen Sie Ihre Arbeit sichtbar.',
@@ -65,13 +66,13 @@ const services = [
     {services.map((service) => (
       <div class="service-block well">
         <a class="block-link" href={service.href} aria-hidden="true" tabindex="-1"></a>
-        <Icon name={service.icon} />
+        {typeof service.icon === 'string' ? <BrandIcon name={service.icon} /> : <service.icon />}
         <div>
           <h3>{service.title}</h3>
           <p>{service.text}</p>
           <p>
             <a href={service.href} class="btn btn-default">
-              {t.learnMore} <Icon name="chevron-right" />
+              {t.learnMore} <ChevronRight />
             </a>
           </p>
         </div>

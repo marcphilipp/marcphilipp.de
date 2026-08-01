@@ -163,11 +163,14 @@ pre code {
   border-radius: 4px;
 }
 
-.icon svg {
+:is(.icon svg, svg.lucide) {
   height: 1em;
-  width: 1.125em;
-  fill: currentColor;
+  width: 1em;
   vertical-align: -0.125em;
+}
+/* Brand icons (span.icon > svg) are filled shapes; Lucide icons (svg.lucide) bring their own stroke */
+.icon svg {
+  fill: currentColor;
 }
 
 /* Buttons */
@@ -262,9 +265,9 @@ h2 + .services-grid { margin-top: 20px; }
 .cta-banner .btn {
   position: relative;
 }
-.service-block > .icon {
+.service-block > :is(.icon, .lucide) {
   flex-shrink: 0;
-  font-size: 2em;
+  font-size: 2.5em;
   color: var(--brand-primary);
 }
 /* Cards show all icons monochrome, even ones with own colors (e.g. the JUnit logo) */
@@ -367,7 +370,7 @@ h2 + .services-grid { margin-top: 20px; }
 }
 .theme-toggle:hover { color: #fff; }
 /* Both icons occupy the same cell; show the current mode */
-.theme-toggle .icon { grid-area: 1 / 1; }
+.theme-toggle .lucide { grid-area: 1 / 1; }
 .theme-toggle .sun { color: light-dark(currentColor, transparent); }
 .theme-toggle .moon { color: light-dark(transparent, currentColor); }
 @media (min-width: 768px) {
@@ -634,7 +637,7 @@ article { margin-bottom: 20px; }
   align-items: center;
 }
 /* Cancel the icon's own height so the text drives the box height */
-.hint .icon { font-size: 2em; margin: -0.5em 0; }
+.hint .lucide { font-size: 2em; margin: -0.5em 0; }
 
 /* Obfuscated email link: hide the decoy segment */
 a.email > span:nth-child(2) {

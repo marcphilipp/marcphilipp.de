@@ -1,4 +1,5 @@
 ---
+import { Rocket } from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
@@ -48,7 +49,7 @@ const blocks = [
 <ServicePage
   title="Software Delivery Performance"
   lead="Slow builds, long-running CI pipelines, and flaky tests are not a fact of life."
-  icon="gauge-high"
+  icon={Rocket}
   lang="en"
   alternates={{
     en: '/en/services/software-delivery-performance/',

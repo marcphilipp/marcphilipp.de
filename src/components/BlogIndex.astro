@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import Icon from './Icon.astro';
+import { ChevronRight } from '@lucide/astro';
 import { translations, formatDate, type Lang } from '../data/translations';
 import { postPath } from '../data/posts';
 
@@ -36,7 +36,7 @@ const posts = (await getCollection('posts', (post) => post.data.lang === lang)).
       <Fragment set:html={excerpt} />
       <p>
         <a href={postPath(post)} class="btn btn-default">
-          {t.blog.read_on} <Icon name="chevron-right" />
+          {t.blog.read_on} <ChevronRight />
         </a>
       </p>
       {index < posts.length - 1 && <hr />}

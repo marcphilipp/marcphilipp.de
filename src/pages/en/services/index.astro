@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Icon from '../../../components/Icon.astro';
+import { ChevronRight, GitPullRequestArrow, Rocket, ShieldCheck } from '@lucide/astro';
+import BrandIcon from '../../../components/BrandIcon.astro';
 import CtaBanner from '../../../components/CtaBanner.astro';
 import { translations } from '../../../data/translations';
 
@@ -11,25 +12,25 @@ const lead =
 
 const services = [
   {
-    icon: 'gauge-high',
+    icon: Rocket,
     title: 'Software Delivery Performance',
     href: '/en/services/software-delivery-performance/',
     text: 'Improve developer experience and productivity: speed up your builds, stabilize your CI pipelines, eliminate flaky tests, and make automated dependency updates work for your team.',
   },
   {
-    icon: 'junit-diamond',
+    icon: 'junit',
     title: 'JUnit Training & Consulting',
     href: '/en/services/junit/',
     text: 'Get the most out of JUnit with training straight from the JUnit team lead — including the ecosystem around it, such as AssertJ, Mockito, WireMock, and Testcontainers.',
   },
   {
-    icon: 'shield-halved',
+    icon: ShieldCheck,
     title: 'Digital Sovereignty',
     href: '/en/services/digital-sovereignty/',
     text: 'Reduce your dependency on US big tech companies by adopting European and open source alternatives — from code hosting to cloud infrastructure.',
   },
   {
-    icon: 'code-branch',
+    icon: GitPullRequestArrow,
     title: 'Open Source',
     href: '/en/services/open-source/',
     text: 'Enable your developers to contribute to open source successfully, open source your own libraries the right way, and make your engineering work visible.',
@@ -64,13 +65,13 @@ const services = [
     {services.map((service) => (
       <div class="service-block well">
         <a class="block-link" href={service.href} aria-hidden="true" tabindex="-1"></a>
-        <Icon name={service.icon} />
+        {typeof service.icon === 'string' ? <BrandIcon name={service.icon} /> : <service.icon />}
         <div>
           <h3>{service.title}</h3>
           <p>{service.text}</p>
           <p>
             <a href={service.href} class="btn btn-default">
-              {t.learnMore} <Icon name="chevron-right" />
+              {t.learnMore} <ChevronRight />
             </a>
           </p>
         </div>
