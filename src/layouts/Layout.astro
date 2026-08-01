@@ -160,13 +160,6 @@ const privacy = {
                 </ul>
               </details>
             </li>
-            {socialLinks.map((link) => (
-              <li class:list={['social', link.key]}>
-                <a rel={link.me ? 'me' : undefined} href={link.href} title={link.title}>
-                  <Icon name={link.key} />
-                </a>
-              </li>
-            ))}
           </ul>
           </div>
         </div>
@@ -194,6 +187,15 @@ const privacy = {
           <li class:list={{ active: Astro.url.pathname === privacy.href }}>
             <a href={privacy.href}>{privacy.title}</a>
           </li>
+        </ul>
+        <ul class="footer-social">
+          {socialLinks.map((link) => (
+            <li class:list={['social', link.key]}>
+              <a rel={link.me ? 'me' : undefined} href={link.href} title={link.title}>
+                <Icon name={link.key} />
+              </a>
+            </li>
+          ))}
         </ul>
         <p class="text-muted"><Icon name="copyright" /> {new Date().getFullYear()} {siteTitle}</p>
       </div>

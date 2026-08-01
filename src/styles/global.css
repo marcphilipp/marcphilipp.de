@@ -23,13 +23,14 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0 0 90px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
@@ -349,7 +350,7 @@ h2 + .services-grid { margin-top: 20px; }
 
 /* Language dropdown */
 .language-menu { position: relative; }
-.language-menu summary { cursor: pointer; list-style: none; gap: 6px; }
+.language-menu summary { cursor: pointer; list-style: none; gap: 6px; padding-right: 0; }
 .language-menu summary::-webkit-details-marker { display: none; }
 .language-menu summary::after {
   content: '';
@@ -385,34 +386,6 @@ h2 + .services-grid { margin-top: 20px; }
 .language-menu .dropdown-menu a:hover { text-decoration: none; background-color: #f5f5f5; }
 .language-menu .dropdown-menu li.active a:hover { background-color: var(--brand-primary); }
 .language-menu .dropdown-menu li.disabled a:hover { background-color: transparent; }
-
-/* Social icons */
-.navbar .social { display: none; }
-@media (min-width: 768px) {
-  .navbar .social {
-    display: flex;
-    align-items: center;
-  }
-  .navbar .social > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    margin: 0 6px;
-    border-radius: 50%;
-    background-color: var(--navbar-fg);
-    font-size: 21px;
-  }
-  .navbar .social .icon svg { display: block; }
-  .navbar .social.github > a { color: #000; }
-  .navbar .social.codeberg > a { color: #2185d0; }
-  .navbar .social.linkedin > a { color: #007bb6; }
-  .navbar .social.mastodon > a { color: #5b4fe5; }
-  .navbar .social.bluesky > a { color: #0085ff; }
-  .navbar .social > a:hover { background-color: currentColor; }
-  .navbar .social > a:hover .icon { color: #fff; }
-}
 
 /* Hamburger toggle (mobile only, CSS-only via checkbox) */
 .nav-toggle-input,
@@ -494,26 +467,58 @@ h2 + .services-grid { margin-top: 20px; }
 
 /* Sticky footer */
 footer {
-  padding-top: 20px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
+  margin-top: auto;
+  padding: 20px 0;
   background-color: #f5f5f5;
 }
+#content { margin-bottom: 30px; }
 footer .container {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 footer .footer-nav {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  flex: 1;
 }
-footer p { margin: 0; }
+footer p { margin: 0; flex: 1; }
+@media (max-width: 767px) {
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  footer p,
+  footer .footer-nav { flex: none; }
+  footer .footer-social { order: -1; }
+}
+
+/* Social icons */
+footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+footer .social > a {
+  display: flex;
+  color: var(--text-muted);
+  font-size: 20px;
+}
+footer .social .icon svg { display: block; }
+footer .social.github > a:hover { color: #000; }
+footer .social.codeberg > a:hover { color: #2185d0; }
+footer .social.linkedin > a:hover { color: #007bb6; }
+footer .social.mastodon > a:hover { color: #5b4fe5; }
+footer .social.bluesky > a:hover { color: #0085ff; }
 
 /* Landing page */
 body.landing-page {
@@ -525,16 +530,14 @@ body.landing-page {
 }
 .landing-page #content {
   text-align: center;
-  margin: 20px 0;
+  margin: 0 auto;
+  /* Padding, not margin: the auto centering margins collapse to 0 when the
+     viewport is full, and this must survive as the minimum gap */
+  padding: 20px 0;
 }
 @media (min-width: 768px) {
-  .landing-page #content {
-    position: absolute;
-    margin-top: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  /* Centered between header and footer: their auto margins split the free space */
+  .landing-page #content { margin-top: auto; }
 }
 .availability-pill {
   display: inline-block;
@@ -560,6 +563,8 @@ body.landing-page {
 
 .landing-page footer { background-color: rgba(36, 62, 106, 0.5); }
 .landing-page footer .text-muted { color: #84a3d5; }
+.landing-page footer .social > a { color: #84a3d5; }
+.landing-page footer .social > a:hover { color: #fff; }
 
 /* Blog */
 .post-date { white-space: nowrap; }
