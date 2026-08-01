@@ -696,7 +696,8 @@ a.email > span:nth-child(2) {
   margin-bottom: 20px;
 }
 .talk {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 4px;
   background-color: var(--bg);
   border: 1px solid var(--border);
@@ -713,8 +714,12 @@ a.email > span:nth-child(2) {
   clip-path: inset(1px);
 }
 .talk .caption {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 12px 9px 0;
 }
 .talk .caption .talk-links {
   text-align: right;
+  margin-top: auto;
 }
