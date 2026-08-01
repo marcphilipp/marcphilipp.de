@@ -1,43 +1,61 @@
 ---
-import { Rocket } from '@lucide/astro';
+import {
+  Bot,
+  CircleArrowUp,
+  Eye,
+  Flame,
+  Gauge,
+  GitMerge,
+  Package,
+  Rocket,
+  Workflow,
+} from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
   {
+    icon: Gauge,
     title: 'Build-Performance-Optimierung',
     text: 'Auf den Build zu warten reißt Ihre Entwicklerinnen und Entwickler aus dem Flow. ' +
         'Ich zeige Teams, wie sie analysieren können, an welchen ihr Gradle- oder Maven-Build langsam ist, und wie sie ihn beschleunigen können, z. B. mit Build- und Configuration-Caching und anderen modernen Features.',
   },
   {
+    icon: CircleArrowUp,
     title: 'Build-Migrationen & -Upgrades',
     text: 'Hängen Sie auf einer alten Version von Gradle oder Maven fest, oder nutzen Sie noch die Groovy DSL? Ich helfe Ihnen, Migrationen und Upgrades sicher zu planen und durchzuführen ohne Ihre Feature-Arbeit auszubremsen.',
   },
   {
+    icon: Eye,
     title: 'Build Observability',
     text: 'Was man nicht messen kann, kann man nicht verbessern. Da ich an Develocity mitgearbeitet habe, kann ich Ihnen bei der Einführung helfen (oder bei ähnlichem Tooling), um Einblick in Build-Zeiten, Cache Misses und Testfehler in Ihrer Organisation zu bekommen.',
   },
   {
+    icon: Workflow,
     title: 'CI-Pipeline-Optimierung',
     text: 'Pull Requests, die auf CI warten, bremsen das ganze Team aus. ' +
         'Noch schlimmer: Wenn Builds oder Tests flaky sind, richten Retries zusätzlichen Schaden an. ' +
         'Ich identifiziere und behebe die Engpässe in Ihren Pipelines, um Feedback-Zyklen zu verkürzen.',
   },
   {
+    icon: Flame,
     title: 'Flaky Tests',
     text: 'Nichts untergräbt das Vertrauen in eine Testsuite so sehr wie Flakiness. Ich helfe Ihnen, Flaky Tests zu identifizieren und schrittweise zu verbessern — dabei kommen oft echte Bugs im Produktionscode ans Licht.',
   },
   {
+    icon: GitMerge,
     title: 'Merge Queues',
     text: 'Ein roter Main-Branch blockiert alle. ' +
         'Techniken wie die Merge Queue halten ihn grün, ohne Ihr Team auszubremsen. ' +
         'Ich habe Merge Queues bereits erfolgreich in großen Monorepos eingeführt und helfe auch Ihnen gerne dabei.',
   },
   {
+    icon: Package,
     title: 'Dependency-Management',
     text: 'Ihr Dependency-Management in den Griff zu bekommen ist wichtig, damit keine subtilen Bugs in Produktion landen. ' +
         'Ich helfe Ihrem Team bei der Einführung von Gradle-Platforms und Maven-BOMs. Spätestens beim nächsten Dependency-Upgrade wird sich das auszahlen!',
   },
   {
+    icon: Bot,
     title: 'Automatisierte Dependency-Updates',
     text: 'Tools wie Dependabot und Renovate sind sehr hilfreich, um Dependencies aktuell zu halten und Security-Alerts schnell zu beheben. ' +
         'Sie in großen Repositories erfolgreich einzusetzen, kann jedoch knifflig sein. ' +

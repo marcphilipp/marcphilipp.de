@@ -1,8 +1,10 @@
 ---
+import { GraduationCap, LifeBuoy, SearchCode } from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
   {
+    icon: GraduationCap,
     title: 'JUnit-Training',
     tall: true,
     text: 'Ein praxisnahes Training (typischerweise 1-2 Tage), von den Grundlagen bis zu fortgeschrittenen Features, abgestimmt auf den Wissensstand Ihres Teams.\n\n**Eine typische Agenda:**',
@@ -17,12 +19,14 @@ const blocks = [
     ],
   },
   {
+    icon: SearchCode,
     title: 'JUnit-Consulting',
     text: 'Gemeinsam identifizieren wir Antipatterns in Ihrer Testsuite und verbessern ihre Struktur, Lesbarkeit und Laufzeit. Durch Code-Reviews und Pair Programming wenden wir das Gelernte aus dem Training an.',
   },
   {
+    icon: LifeBuoy,
     title: 'Support & Care',
-    text: 'In Kooperation mit [Open Elements](https://open-elements.com) biete ich kommerziellen Support für JUnit an. Alle ungenutzten Support-Stunden fließen direkt in meine Arbeit an JUnit!',
+    text: 'In Kooperation mit *Open Elements* biete ich kommerziellen Support für JUnit an. Alle ungenutzten Support-Stunden fließen direkt in meine Arbeit an JUnit!',
     link: { href: 'https://open-elements.com/support-care', text: 'Mehr erfahren' },
   },
 ];

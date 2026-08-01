@@ -15,6 +15,7 @@ interface Props {
   lang: Lang;
   alternates: Partial<Record<Lang, string>>;
   blocks: {
+    icon: AstroComponent;
     title: string;
     text: string;
     items?: string[];
@@ -42,6 +43,8 @@ const t = translations[lang].services;
   <div class="services-grid">
     {blocks.map((block) => (
       <div class:list={['service-block', 'well', { tall: block.tall }]}>
+        {block.link && <a class="block-link" href={block.link.href} aria-hidden="true" tabindex="-1"></a>}
+        <block.icon />
         <div>
           <h3>{block.title}</h3>
           {block.text.split(/\n\s*\n/).map((paragraph) => <p set:html={md(paragraph)} />)}

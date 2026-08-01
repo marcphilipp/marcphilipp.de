@@ -1,17 +1,20 @@
 ---
-import { ShieldCheck } from '@lucide/astro';
+import { Cloud, FolderGit2, Globe, ShieldCheck } from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
   {
+    icon: FolderGit2,
     title: 'Code hosting',
     text: 'Migrate from GitHub to Codeberg for open source projects, or to a self-hosted forge for everything else.',
   },
   {
+    icon: Globe,
     title: 'Static site hosting',
     text: 'Move your websites from GitHub Pages etc. to European alternatives such as [statichost.eu](https://statichost.eu).',
   },
   {
+    icon: Cloud,
     title: 'Cloud infrastructure',
     text: 'Use Hetzner and other European cloud providers instead of AWS, Azure, and Google Cloud.',
   },

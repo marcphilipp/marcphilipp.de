@@ -1,43 +1,61 @@
 ---
-import { Rocket } from '@lucide/astro';
+import {
+  Bot,
+  CircleArrowUp,
+  Eye,
+  Flame,
+  Gauge,
+  GitMerge,
+  Package,
+  Rocket,
+  Workflow,
+} from '@lucide/astro';
 import ServicePage from '../../../components/ServicePage.astro';
 
 const blocks = [
   {
+    icon: Gauge,
     title: 'Build performance optimization',
     text: 'Waiting for the build breaks your developers’ flow. ' +
         'I show teams how they can analyze where their Gradle or Maven build spends its time and how to make it fast, e.g., with build and configuration caching and other modern features.',
   },
   {
+    icon: CircleArrowUp,
     title: 'Build migrations & upgrades',
     text: 'Stuck on an old version of Gradle or Maven, or the Groovy DSL? I can help you plan and execute migrations and upgrades safely, without stopping your feature work.',
   },
   {
+    icon: Eye,
     title: 'Build observability',
     text: 'You can’t fix what you can’t measure. Having helped build Develocity, I help you adopt it (or similar tooling) to get insight into build times, cache misses, and test failures across your organization.',
   },
   {
+    icon: Workflow,
     title: 'CI pipeline optimization',
     text: 'Pull requests sitting idle waiting for CI slow the whole team down. ' +
         'Even worse, when builds or tests are flaky, retries cause additional harm. ' +
         'I identify and resolve the bottlenecks in your pipelines to shorten feedback cycles.',
   },
   {
+    icon: Flame,
     title: 'Flaky tests',
     text: 'Nothing erodes trust in a test suite like flakiness. I help you identify flaky tests and improve them over time — often uncovering real bugs in production code along the way.',
   },
   {
+    icon: GitMerge,
     title: 'Merge queues',
     text: 'A red main branch blocks everyone. ' +
         'Techniques like the merge queue keep it green without slowing your team down. ' +
         'I have successfully introduced merge queues for large monorepos in the past and can help you, too.',
   },
   {
+    icon: Package,
     title: 'Dependency management',
     text: 'Getting your dependency management under control is important to avoid subtle bugs ending up in production. ' +
         'I\'ll help your team adopt Gradle platforms and Maven BOMs, which will pay off the next time you need to upgrade a dependency.',
   },
   {
+    icon: Bot,
     title: 'Automated dependency updates',
     text: 'Tools like Dependabot and Renovate can be very helpful for keeping dependencies up-to-date and resolving security alerts quickly. ' +
         'Using them successfully in large repositories can be tricky, though. ' +
