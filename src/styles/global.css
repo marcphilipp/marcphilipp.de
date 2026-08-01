@@ -372,7 +372,8 @@ h2 + .services-grid { margin-top: 20px; }
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 .language-menu .dropdown-menu li { display: block; }
-.language-menu .dropdown-menu a {
+.language-menu .dropdown-menu a,
+.language-menu .dropdown-menu li.disabled span {
   display: block;
   padding: 3px 20px;
   color: #333;
@@ -382,10 +383,9 @@ h2 + .services-grid { margin-top: 20px; }
   color: #fff;
   background-color: var(--brand-primary);
 }
-.language-menu .dropdown-menu li.disabled a { color: var(--text-muted); cursor: not-allowed; }
+.language-menu .dropdown-menu li.disabled span { color: var(--text-muted); cursor: not-allowed; }
 .language-menu .dropdown-menu a:hover { text-decoration: none; background-color: #f5f5f5; }
 .language-menu .dropdown-menu li.active a:hover { background-color: var(--brand-primary); }
-.language-menu .dropdown-menu li.disabled a:hover { background-color: transparent; }
 
 /* Hamburger toggle (mobile only, CSS-only via checkbox) */
 .nav-toggle-input,
@@ -440,7 +440,7 @@ h2 + .services-grid { margin-top: 20px; }
     box-shadow: none;
   }
   .language-menu .dropdown-menu a,
-  .language-menu .dropdown-menu li.disabled a {
+  .language-menu .dropdown-menu li.disabled span {
     color: var(--navbar-fg);
     padding: 5px 0 5px 10px;
   }

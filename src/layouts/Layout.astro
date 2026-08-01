@@ -146,15 +146,15 @@ const privacy = {
           <ul class="navbar-right">
             <li class="language-menu">
               <details>
-                <summary><Icon name="language" /> {translations[lang].name}</summary>
+                <summary aria-label={`${lang === 'en' ? 'Language' : 'Sprache'}: ${translations[lang].name}`}><Icon name="language" /> {translations[lang].name}</summary>
                 <ul class="dropdown-menu">
                   {langs.map((l) =>
                     l === lang ? (
-                      <li class="active"><a href={Astro.url.pathname}>{translations[l].name}</a></li>
+                      <li class="active"><a href={Astro.url.pathname} lang={l} hreflang={l}>{translations[l].name}</a></li>
                     ) : alternates[l] ? (
-                      <li><a href={alternates[l]}>{translations[l].name}</a></li>
+                      <li><a href={alternates[l]} lang={l} hreflang={l}>{translations[l].name}</a></li>
                     ) : (
-                      <li class="disabled"><a>{translations[l].name}</a></li>
+                      <li class="disabled"><span lang={l}>{translations[l].name}</span></li>
                     )
                   )}
                 </ul>
