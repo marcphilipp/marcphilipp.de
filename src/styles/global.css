@@ -678,8 +678,9 @@ article {
   gap: 10px;
   align-items: center;
 }
-/* Cancel the icon's own height so the text drives the box height */
-.hint .lucide { font-size: 2em; margin: -0.5em 0; }
+/* Cancel the icon's own height so the text drives the box height;
+   flex-shrink: 0 keeps narrow viewports (iOS) from squishing the icon */
+.hint .lucide { font-size: 2em; margin: -0.5em 0; flex-shrink: 0; }
 
 /* Obfuscated email link: hide the decoy segment */
 a.email > span:nth-child(2) {
