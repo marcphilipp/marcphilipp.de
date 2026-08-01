@@ -371,7 +371,7 @@ h2 + .services-grid { margin-top: 20px; }
   padding: 0 0 0 15px;
   border: 0;
   background: none;
-  font-size: 16px;
+  font: inherit;
   color: var(--navbar-fg);
   cursor: pointer;
 }
@@ -380,6 +380,7 @@ h2 + .services-grid { margin-top: 20px; }
 .theme-toggle .lucide { grid-area: 1 / 1; }
 .theme-toggle .sun { color: light-dark(currentColor, transparent); }
 .theme-toggle .moon { color: light-dark(transparent, currentColor); }
+.theme-toggle .theme-label { display: none; }
 @media (min-width: 768px) {
   .navbar-main > li.active::after {
     content: ' ';
@@ -493,6 +494,14 @@ h2 + .services-grid { margin-top: 20px; }
   .theme-toggle {
     min-height: 0;
     padding: 10px 0;
+  }
+  .theme-toggle {
+    justify-content: start;
+  }
+  .theme-toggle .theme-label {
+    display: block;
+    grid-area: 1 / 2;
+    padding-left: 6px;
   }
   .language-menu .dropdown-menu {
     position: static;
