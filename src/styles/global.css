@@ -19,8 +19,6 @@
   --border: light-dark(#ddd, #32415e);
   --border-hover: light-dark(#c9c9c9, #46587c);
   --link-hover: light-dark(#2361c9, #7fa8ec);
-  --code-fg: light-dark(#c7254e, #ff92ab);
-  --code-bg: light-dark(#f9f2f4, #31222d);
   /* Semi-transparent wash over the service-block pattern */
   --wash: light-dark(rgb(245 245 245), rgb(31 44 66));
   /* The pattern is translucent black; invisible on dark backgrounds, so swap in a white variant */
@@ -114,16 +112,17 @@ code, pre {
 }
 code {
   padding: 2px 4px;
-  font-size: 90%;
-  color: var(--code-fg);
-  background-color: var(--code-bg);
+  font-size: 100%;
+  color: var(--text-color);
+  background-color: var(--bg-alt);
   border-radius: 4px;
 }
 pre {
   padding: 9.5px;
   margin: 0 0 12px;
-  font-size: 14px;
-  border: 1px solid var(--brand-primary);
+  font-size: 100%;
+  line-height: 1.5;
+  border: 1px solid var(--border);
   border-radius: 4px;
   overflow-x: auto;
 }
@@ -651,7 +650,10 @@ body.landing-page {
 /* Blog */
 .post-date { white-space: nowrap; }
 .post-title { margin-top: 30px; }
-article { margin-bottom: 20px; }
+article {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
 
 .pagination-nav { text-align: center; }
 .pagination {

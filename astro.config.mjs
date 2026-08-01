@@ -13,7 +13,9 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: 'nord',
+      themes: { light: 'night-owl-light', dark: 'night-owl' },
+      // emits color: light-dark(…, …), which follows the site's color-scheme toggle
+      defaultColor: 'light-dark()',
     },
   },
 });
