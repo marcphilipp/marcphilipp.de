@@ -23,12 +23,19 @@
   --code-bg: light-dark(#f9f2f4, #31222d);
   /* Semi-transparent wash over the service-block pattern */
   --wash: light-dark(rgb(245 245 245), rgb(31 44 66));
+  /* The pattern is translucent black; invisible on dark backgrounds, so swap in a white variant */
+  --block-pattern: url('/img/congruent_pentagon.png');
   --font-sans: 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Arvo', 'Times New Roman', Times, serif;
   --font-mono: 'Fira Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 :root[data-theme='light'] { color-scheme: light; }
 :root[data-theme='dark'] { color-scheme: dark; }
+/* light-dark() only works for colors, so the image swap needs both dark triggers */
+:root[data-theme='dark'] { --block-pattern: url('/img/congruent_pentagon_white.png'); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) { --block-pattern: url('/img/congruent_pentagon_white.png'); }
+}
 
 *,
 *::before,
@@ -242,7 +249,7 @@ h2 + .services-grid { margin-top: 20px; }
       color-mix(in srgb, var(--wash) 65%, transparent),
       color-mix(in srgb, var(--wash) 65%, transparent)
     ),
-    url('/img/congruent_pentagon.png');
+    var(--block-pattern);
   background-size: 300px;
   transition: border-color 0.15s ease;
 }
@@ -254,7 +261,7 @@ h2 + .services-grid { margin-top: 20px; }
       color-mix(in srgb, var(--wash) 45%, transparent),
       color-mix(in srgb, var(--wash) 45%, transparent)
     ),
-    url('/img/congruent_pentagon.png');
+    var(--block-pattern);
 }
 /* Invisible overlay makes the whole block clickable; the real button sits above it */
 .block-link {
