@@ -1,7 +1,10 @@
 @import './fonts.css';
 
 /* Values lifted from the old compiled Bootstrap build (jekyll/_site/css/main.css) */
+/* Follows the OS by default; the navbar toggle sets data-theme to override.
+   Dark values are navy tones derived from the site's brand blues. */
 :root {
+  color-scheme: light dark;
   --brand-primary: #598fe7;
   --brand-success: #25a162;
   --brand-danger: #dc524a;
@@ -9,12 +12,23 @@
   --jumbotron-small: #243e6a;
   --navbar-fg: #fefeff;
   --navbar-height: 55px;
-  --text-color: #444;
-  --text-muted: #777;
+  --text-color: light-dark(#444, #cfd6e2);
+  --text-muted: light-dark(#777, #8da0bd);
+  --bg: light-dark(#fff, #16202f);
+  --bg-alt: light-dark(#f5f5f5, #1f2c42);
+  --border: light-dark(#ddd, #32415e);
+  --border-hover: light-dark(#c9c9c9, #46587c);
+  --link-hover: light-dark(#2361c9, #7fa8ec);
+  --code-fg: light-dark(#c7254e, #ff92ab);
+  --code-bg: light-dark(#f9f2f4, #31222d);
+  /* Semi-transparent wash over the service-block pattern */
+  --wash: light-dark(rgb(245 245 245), rgb(31 44 66));
   --font-sans: 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Arvo', 'Times New Roman', Times, serif;
   --font-mono: 'Fira Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
 
 *,
 *::before,
@@ -35,7 +49,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: var(--text-color);
-  background-color: #fff;
+  background-color: var(--bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -65,7 +79,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #2361c9;
+  color: var(--link-hover);
   text-decoration: underline;
 }
 
@@ -77,14 +91,14 @@ img {
 hr {
   margin: 24px 0;
   border: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
 }
 
 blockquote {
   padding: 11px 22px;
   margin: 0 0 24px;
   font-size: 20px;
-  border-left: 5px solid #eee;
+  border-left: 5px solid var(--border);
 }
 
 /* Code (Shiki emits pre.astro-code with inline theme colors) */
@@ -94,8 +108,8 @@ code, pre {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: var(--code-fg);
+  background-color: var(--code-bg);
   border-radius: 4px;
 }
 pre {
@@ -144,8 +158,8 @@ pre code {
 .img-responsive { display: block; max-width: 100%; height: auto; }
 .img-thumbnail {
   padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
 }
 
@@ -170,8 +184,8 @@ pre code {
   background-image: none;
 }
 .btn:hover, .btn:focus { text-decoration: none; }
-.btn-default { color: #333; background-color: #fff; border-color: #ccc; }
-.btn-default:hover { color: #333; background-color: #e6e6e6; border-color: #adadad; }
+.btn-default { color: var(--text-color); background-color: var(--bg); border-color: var(--border); }
+.btn-default:hover { color: var(--text-color); background-color: var(--bg-alt); border-color: var(--border-hover); }
 .btn-success { color: #fff; background-color: var(--brand-success); border-color: #1f8752; }
 .btn-success:hover { color: #fff; background-color: #1e8350; border-color: #145636; }
 .btn-lg { padding: 10px 16px; font-size: 20px; border-radius: 6px; }
@@ -189,14 +203,15 @@ pre code {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+/* ponytail: stays light in dark mode; only on the 404 page, theme it if that ever bothers you */
 .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
 
 /* Wells (post note, blog index hint) */
 .well {
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
   border-radius: 4px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -220,16 +235,22 @@ h2 + .services-grid { margin-top: 20px; }
   margin-bottom: 0;
   /* Wash of the well color over the pattern to soften it */
   background-image:
-    linear-gradient(rgba(245, 245, 245, 0.65), rgba(245, 245, 245, 0.65)),
+    linear-gradient(
+      color-mix(in srgb, var(--wash) 65%, transparent),
+      color-mix(in srgb, var(--wash) 65%, transparent)
+    ),
     url('/img/congruent_pentagon.png');
   background-size: 300px;
   transition: border-color 0.15s ease;
 }
 .service-block:hover {
-  border-color: #c9c9c9;
+  border-color: var(--border-hover);
   /* Weaker wash lets the pattern show through darker */
   background-image:
-    linear-gradient(rgba(245, 245, 245, 0.45), rgba(245, 245, 245, 0.45)),
+    linear-gradient(
+      color-mix(in srgb, var(--wash) 45%, transparent),
+      color-mix(in srgb, var(--wash) 45%, transparent)
+    ),
     url('/img/congruent_pentagon.png');
 }
 /* Invisible overlay makes the whole block clickable; the real button sits above it */
@@ -332,6 +353,23 @@ h2 + .services-grid { margin-top: 20px; }
 }
 .navbar-main > li > a:hover,
 .language-menu summary:hover { color: #fff; text-decoration: none; }
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  min-height: var(--navbar-height);
+  padding: 0 0 0 15px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  color: var(--navbar-fg);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: #fff; }
+/* Both icons occupy the same cell; show the current mode */
+.theme-toggle .icon { grid-area: 1 / 1; }
+.theme-toggle .sun { color: light-dark(currentColor, transparent); }
+.theme-toggle .moon { color: light-dark(transparent, currentColor); }
 @media (min-width: 768px) {
   .navbar-main > li.active::after {
     content: ' ';
@@ -366,8 +404,8 @@ h2 + .services-grid { margin-top: 20px; }
   display: block;
   min-width: 160px;
   padding: 5px 0;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
@@ -376,7 +414,7 @@ h2 + .services-grid { margin-top: 20px; }
 .language-menu .dropdown-menu li.disabled span {
   display: block;
   padding: 3px 20px;
-  color: #333;
+  color: var(--text-color);
   white-space: nowrap;
 }
 .language-menu .dropdown-menu li.active a {
@@ -384,7 +422,7 @@ h2 + .services-grid { margin-top: 20px; }
   background-color: var(--brand-primary);
 }
 .language-menu .dropdown-menu li.disabled span { color: var(--text-muted); cursor: not-allowed; }
-.language-menu .dropdown-menu a:hover { text-decoration: none; background-color: #f5f5f5; }
+.language-menu .dropdown-menu a:hover { text-decoration: none; background-color: var(--bg-alt); }
 .language-menu .dropdown-menu li.active a:hover { background-color: var(--brand-primary); }
 
 /* Hamburger toggle (mobile only, CSS-only via checkbox) */
@@ -427,7 +465,8 @@ h2 + .services-grid { margin-top: 20px; }
   }
   .navbar ul.navbar-right { margin-left: 0; }
   .navbar-main > li > a,
-  .language-menu summary {
+  .language-menu summary,
+  .theme-toggle {
     min-height: 0;
     padding: 10px 0;
   }
@@ -469,7 +508,7 @@ h2 + .services-grid { margin-top: 20px; }
 footer {
   margin-top: auto;
   padding: 20px 0;
-  background-color: #f5f5f5;
+  background-color: var(--bg-alt);
 }
 #content { margin-bottom: 30px; }
 footer .container {
@@ -514,7 +553,7 @@ footer .social > a {
   font-size: 20px;
 }
 footer .social .icon svg { display: block; }
-footer .social.github > a:hover { color: #000; }
+footer .social.github > a:hover { color: light-dark(#000, #fff); }
 footer .social.codeberg > a:hover { color: #2185d0; }
 footer .social.linkedin > a:hover { color: #007bb6; }
 footer .social.mastodon > a:hover { color: #5b4fe5; }
@@ -544,11 +583,11 @@ body.landing-page {
   padding: 5px 14px;
   border-radius: 999px;
   color: var(--text-color);
-  background-color: #fff;
+  background-color: var(--bg);
   font-size: 14px;
 }
 .availability-pill:hover {
-  background-color: #e6e6e6;
+  background-color: var(--bg-alt);
   text-decoration: none;
 }
 .availability-pill::before {
@@ -582,12 +621,12 @@ article { margin-bottom: 20px; }
   display: block;
   padding: 6px 12px;
   margin-left: -1px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
 }
 .pagination > li:first-child > a { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
 .pagination > li:last-child > a { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-.pagination > li > a:hover { background-color: #eee; text-decoration: none; }
+.pagination > li > a:hover { background-color: var(--bg-alt); text-decoration: none; }
 
 .hint {
   display: flex;
@@ -643,12 +682,15 @@ a.email > span:nth-child(2) {
 .talk {
   display: block;
   padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
 }
 .talk img {
-  border-bottom: 1px solid #ddd;
+  /* Backdrop for the mostly-transparent slide placeholder (invisible behind opaque thumbnails):
+     white in light mode, muted blue-gray in dark so it doesn't glare */
+  background-color: light-dark(#fff, #8da0bd);
+  border-bottom: 1px solid var(--border);
   object-fit: cover;
   width: 100%;
   height: auto;

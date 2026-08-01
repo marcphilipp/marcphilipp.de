@@ -86,6 +86,13 @@ const privacy = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Apply a stored theme override before first paint to avoid flashing
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -115,7 +122,8 @@ const privacy = {
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/favicon-144x144.png" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16202f" media="(prefers-color-scheme: dark)" />
 
     {langs
       .filter((l) => alternates[l])
@@ -160,6 +168,16 @@ const privacy = {
                 </ul>
               </details>
             </li>
+            <li>
+              <button
+                type="button"
+                class="theme-toggle"
+                aria-label={lang === 'en' ? 'Toggle dark mode' : 'Dunkelmodus umschalten'}
+              >
+                <Icon name="moon" class="moon" />
+                <Icon name="sun" class="sun" />
+              </button>
+            </li>
           </ul>
           </div>
         </div>
@@ -200,5 +218,19 @@ const privacy = {
         <p class="text-muted"><Icon name="copyright" /> {new Date().getFullYear()} {siteTitle}</p>
       </div>
     </footer>
+
+    <script>
+      document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const isDark = root.dataset.theme
+          ? root.dataset.theme === 'dark'
+          : matchMedia('(prefers-color-scheme: dark)').matches;
+        const next = isDark ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem('theme', next);
+        } catch {}
+      });
+    </script>
   </body>
 </html>
