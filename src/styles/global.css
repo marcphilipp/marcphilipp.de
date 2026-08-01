@@ -441,24 +441,38 @@ h2 + .services-grid { margin-top: 20px; }
   display: none;
 }
 @media (max-width: 767px) {
+  .nav-toggle-input {
+    /* Visually hidden but focusable, so keyboard/screen-reader users can operate the toggle */
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .nav-toggle-input:focus-visible ~ .nav-toggle {
+    outline: 2px solid var(--navbar-fg);
+    outline-offset: 2px;
+  }
   .nav-toggle {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
     align-self: center;
     margin-left: auto;
-    padding: 11px 10px;
-    border: 1px solid var(--navbar-fg);
-    border-radius: 4px;
+    padding: 8px;
     cursor: pointer;
+    color: var(--navbar-fg);
   }
-  .nav-toggle span {
+  .nav-toggle svg {
+    width: 28px;
+    height: 28px;
+  }
+  .nav-toggle .menu-close,
+  .nav-toggle-input:checked ~ .nav-toggle .menu-open {
+    display: none;
+  }
+  .nav-toggle-input:checked ~ .nav-toggle .menu-close {
     display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-    background-color: var(--navbar-fg);
   }
   .navbar-links {
     display: none;

@@ -1,5 +1,5 @@
 ---
-import { Copyright, Languages, Moon, Sun } from '@lucide/astro';
+import { Copyright, Languages, Menu, Moon, Sun, X } from '@lucide/astro';
 import BrandIcon from '../components/BrandIcon.astro';
 import { translations, type Lang } from '../data/translations';
 import '../styles/global.css';
@@ -138,11 +138,10 @@ const privacy = {
       <nav class="navbar">
         <div class="container">
           <a class="navbar-brand" href={translations[lang].index}>{siteTitle}</a>
-          <input type="checkbox" id="nav-toggle" class="nav-toggle-input" />
-          <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input" autocomplete="off" aria-label="Toggle navigation" />
+          <label for="nav-toggle" class="nav-toggle">
+            <Menu class="menu-open" />
+            <X class="menu-close" />
           </label>
           <div class="navbar-links">
           <ul class="navbar-main">
