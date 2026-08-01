@@ -1,5 +1,5 @@
 ---
-import Hint from '../../components/Hint.astro';
+import LanguageHint from '../../components/LanguageHint.astro';
 import Layout from '../../layouts/Layout.astro';
 import content from '../../data/privacy-policy.html?raw';
 ---
@@ -9,9 +9,9 @@ import content from '../../data/privacy-policy.html?raw';
   lang="en"
   alternates={{ en: '/en/privacy-policy/', de: '/de/datenschutz/' }}
 >
-  <Hint>
+  <LanguageHint>
     This is a convenience translation of the German <a href="/de/datenschutz/">Datenschutzerklärung</a>.
     In case of discrepancies, the German version prevails.
-  </Hint>
+  </LanguageHint>
   <Fragment set:html={content} />
 </Layout>

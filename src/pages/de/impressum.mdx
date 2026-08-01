@@ -5,16 +5,16 @@ lang: de
 noindex: true
 ---
 
-import Hint from '../../components/Hint.astro';
+import LanguageHint from '../../components/LanguageHint.astro';
 
 {/* set:html keeps the email obfuscated — MDX would decode the entities at compile time */}
 export const email =
   '<a class="email" href="mailto:&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x40;&#x6D;&#x61;&#x72;&#x63;&#x70;&#x68;&#x69;&#x6C;&#x69;&#x70;&#x70;&#x2E;&#x64;&#x65;">contact@<span>marc</span>philipp.<span>example.</span>de</a>';
 
-<Hint>
+<LanguageHint>
   This legal notice ("Impressum") is required by German law and is therefore only available in
   German.
-</Hint>
+</LanguageHint>
 
 **Marc Philipp**\
 Herrenalber Str. 28a\

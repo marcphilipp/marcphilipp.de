@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { ChevronRight } from '@lucide/astro';
 import { translations, formatDate, type Lang } from '../data/translations';
-import { postPath } from '../data/posts';
+import { postExcerpt, postPath } from '../data/posts';
 
 interface Props {
   lang: Lang;
@@ -20,11 +20,9 @@ const posts = (await getCollection('posts', (post) => post.data.lang === lang)).
 <hr />
 
 {posts.map((post, index) => {
-  const html = post.rendered?.html ?? '';
   // Jekyll never applied the lead styling to excerpts, so drop the wrapper
   // (the <!--more--> split may leave it unclosed anyway).
-  const excerpt = html
-    .split('<!--more-->')[0]
+  const excerpt = postExcerpt(post)
     .replaceAll('<div class="lead">', '')
     .replaceAll('</div>', '');
   return (

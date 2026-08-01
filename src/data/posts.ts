@@ -1,4 +1,22 @@
 import type { CollectionEntry } from 'astro:content';
+import { md } from './markdown';
+
+/**
+ * HTML excerpt: everything before the `more` marker. Markdown posts use their
+ * rendered HTML; MDX posts have no `rendered.html`, so their raw body is used
+ * with imports dropped and inline Markdown converted.
+ * ponytail: regex-only Markdown for the MDX branch; render via the Container API if MDX excerpts ever need more
+ */
+export function postExcerpt(post: CollectionEntry<'posts'>): string {
+  const html = post.rendered?.html;
+  if (html) return html.split('<!--more-->')[0];
+  const text = (post.body ?? '')
+    .split('{/* more */}')[0]
+    .replace(/^import .*$/gm, '')
+    .replace(/^<\/?div.*$/gm, '')
+    .trim();
+  return `<p>${md(text)}</p>`;
+}
 
 /** Jekyll-compatible permalink: /blog/:year/:month/:day/:title/ */
 export function postPath(post: CollectionEntry<'posts'>): string {

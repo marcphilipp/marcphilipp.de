@@ -1,14 +1,14 @@
 ---
 import BlogIndex from '../../components/BlogIndex.astro';
-import Hint from '../../components/Hint.astro';
+import LanguageHint from '../../components/LanguageHint.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="Blog" lang="en" activeNav="blog" alternates={{ en: '/en/blog/', de: '/de/blog/' }}>
   <BlogIndex lang="en">
-    <Hint>
+    <LanguageHint>
       These are my blog posts in English. If you speak German, be sure to check out
       my <a href="/de/blog/">German posts</a>, too.
-    </Hint>
+    </LanguageHint>
   </BlogIndex>
 </Layout>

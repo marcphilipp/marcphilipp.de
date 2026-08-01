@@ -1,8 +1,13 @@
 ---
-import { Languages } from '@lucide/astro';
+import type { AstroComponent } from '@lucide/astro';
+
+interface Props {
+  icon: AstroComponent;
+}
+const { icon: Icon } = Astro.props;
 ---
 
 <div class="well hint">
-  <Languages />
+  <Icon />
   <div><slot /></div>
 </div>

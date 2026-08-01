@@ -5,7 +5,7 @@ categories: [Sovereign Tech Fund, JUnit]
 lang: en
 ref: 2025-08-21-stf-milestone-6-improved-kotlin-support
 note: |
-  This post is part of the series on my work on JUnit supported by the <a href="https://www.sovereign.tech/programs/fund">Sovereign Tech Fund</a> (STF). Please refer to the <a href="/blog/2025/01/19/being-a-full-time-open-source-maintainer-supported-by-the-sovereign-tech-fund/">initial post</a> for context and a list of all posts.
+  This post is part of the series on my work on JUnit supported by the [Sovereign Tech Fund](https://www.sovereign.tech/programs/fund) (STF). Please refer to the [initial post](/blog/2025/01/19/being-a-full-time-open-source-maintainer-supported-by-the-sovereign-tech-fund/) for context and a list of all posts.
 ---
 
 <div class="lead">
