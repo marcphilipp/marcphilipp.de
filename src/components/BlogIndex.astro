@@ -17,8 +17,6 @@ const posts = (await getCollection('posts', (post) => post.data.lang === lang)).
 
 <slot />
 
-<hr />
-
 {posts.map((post, index) => {
   // Jekyll never applied the lead styling to excerpts, so drop the wrapper
   // (the <!--more--> split may leave it unclosed anyway).
