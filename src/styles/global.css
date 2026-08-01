@@ -382,6 +382,10 @@ h2 + .services-grid { margin-top: 20px; }
 .theme-toggle .moon { color: light-dark(transparent, currentColor); }
 .theme-toggle .theme-label { display: none; }
 @media (min-width: 768px) {
+  .theme-toggle .lucide {
+    width: 26px;
+    height: 26px;
+  }
   .navbar-main > li.active::after {
     content: ' ';
     position: absolute;
@@ -399,7 +403,7 @@ h2 + .services-grid { margin-top: 20px; }
 
 /* Language dropdown */
 .language-menu { position: relative; }
-.language-menu summary { cursor: pointer; list-style: none; gap: 6px; padding-right: 0; }
+.language-menu summary { cursor: pointer; list-style: none; gap: 6px; }
 .language-menu summary::-webkit-details-marker { display: none; }
 .language-menu summary::after {
   content: '';
