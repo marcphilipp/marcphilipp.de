@@ -35,8 +35,8 @@ async function download(slidesUrl, name) {
 }
 
 let downloads = 0;
-for (const talk of talks) {
-  if (!talk.slides) continue;
+await Promise.all(talks.map(async (talk) => {
+  if (!talk.slides) return;
   const name = new URL(talk.slides).pathname.replace(/^\/|\/$/g, '');
   let file = await findCached(name);
   if (!file) {
@@ -45,11 +45,11 @@ for (const talk of talks) {
       downloads++;
     } catch (error) {
       console.warn(`WARN skipping slide image for "${talk.title}": ${error.message}`);
-      continue;
+      return;
     }
   }
   talk.slideImage = file;
-}
+}));
 
 talks.sort((a, b) => new Date(a.date) - new Date(b.date));
 await writeFile('src/data/talks.json', JSON.stringify(talks, null, 2));
